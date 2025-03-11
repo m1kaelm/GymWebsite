@@ -1,0 +1,63 @@
+@startuml
+
+start
+
+:Gym Member creates a new account;
+if (Valid ID and email?) then (Yes)
+  :Account created;
+  :View profile details;
+else (No)
+  :Show error message;
+endif
+
+:Gym Member logs in;
+if (Valid credentials?) then (Yes)
+  :Access granted;
+  :View dashboard;
+else (No)
+  :Show login error;
+endif
+
+:Goto Profile Management;
+
+:Gym Member manages membership plan;
+:View subscription details;
+:Renew plan if needed;
+
+:Gym Member browses available classes;
+:View class schedule;
+:Filter classes by date, type, or trainer;
+:Registers for selected class;
+
+:Gym Staff manages class schedules;
+:Create new class with date, time, and trainer;
+:Update or delete existing classes;
+:Members can view and register for classes;
+
+:Gym Staff assigns trainers to classes;
+:Select trainer for a class;
+:Update trainer availability;
+:Track trainer working hours;
+
+:Gym Member cancels class registration;
+if (Within allowed time?) then (Yes)
+  :Cancel registration;
+  :Notify staff and trainer;
+else (No)
+  :Show cancellation restriction message;
+endif
+
+:Gym Member views registered classes;
+:Check-in for a class;
+
+:Gym Staff checks class occupancy;
+:Monitor real-time attendance;
+
+stop
+
+
+== Profile Management ==
+:Gym Member updates profile;
+:Update name, address, payment info;
+
+@enduml

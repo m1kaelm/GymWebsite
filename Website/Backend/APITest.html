@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym API Test</title>
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <h1>Gym Management API Test</h1>
+
+    <h2>1. Register Member</h2>
+    <input type="text" id="regName" placeholder="Full Name">
+    <input type="email" id="regEmail" placeholder="Email">
+    <input type="password" id="regPassword" placeholder="Password">
+    <button onclick="registerMember()">Register</button>
+    <p id="regResponse"></p>
+
+    <h2>2. Get Member Profile</h2>
+    <input type="number" id="memberId" placeholder="Member ID">
+    <button onclick="getMember()">Get Profile</button>
+    <p id="memberResponse"></p>
+
+    <h2>3. Add Class</h2>
+    <input type="text" id="className" placeholder="Class Name">
+    <input type="text" id="classSchedule" placeholder="Schedule">
+    <input type="number" id="trainerId" placeholder="Trainer ID">
+    <button onclick="addClass()">Add Class</button>
+    <p id="classResponse"></p>
+
+    <h2>4. Get All Classes</h2>
+    <button onclick="getClasses()">View Classes</button>
+    <p id="classesResponse"></p>
+
+    <h2>5. Assign Trainer</h2>
+    <input type="number" id="assignClassId" placeholder="Class ID">
+    <input type="number" id="assignTrainerId" placeholder="Trainer ID">
+    <button onclick="assignTrainer()">Assign Trainer</button>
+    <p id="assignResponse"></p>
+
+    <h2>6. Track Trainer Hours</h2>
+    <input type="number" id="trackTrainerId" placeholder="Trainer ID">
+    <input type="number" id="workHours" placeholder="Hours">
+    <button onclick="trackHours()">Track Hours</button>
+    <p id="trackResponse"></p>
+
+    <h2>7. Renew Membership</h2>
+    <input type="number" id="renewMemberId" placeholder="Member ID">
+    <input type="text" id="newPlan" placeholder="New Plan">
+    <button onclick="renewMembership()">Renew</button>
+    <p id="renewResponse"></p>
+
+</body>
+</html>

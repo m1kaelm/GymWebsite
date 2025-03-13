@@ -5,50 +5,170 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym API Test</title>
     <script src="scripts.js" defer></script>
+    <style>
+        .test-section {
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .response {
+            background: #f5f5f5;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Gym Management API Test</h1>
+    <h1>Gym Management API Test Dashboard</h1>
 
-    <h2>1. Register Member</h2>
-    <input type="text" id="regName" placeholder="Full Name">
-    <input type="email" id="regEmail" placeholder="Email">
-    <input type="password" id="regPassword" placeholder="Password">
-    <button onclick="registerMember()">Register</button>
-    <p id="regResponse"></p>
+    <div class="test-section">
+        <h2>1. Member Management</h2>
+        <h3>Register Member</h3>
+        <input type="text" id="regFirstName" placeholder="First Name">
+        <input type="text" id="regLastName" placeholder="Last Name">
+        <input type="email" id="regEmail" placeholder="Email">
+        <input type="password" id="regPassword" placeholder="Password">
+        <input type="tel" id="regPhone" placeholder="Phone Number">
+        <button onclick="registerMember()">Register</button>
+        <div id="regResponse" class="response"></div>
 
-    <h2>2. Get Member Profile</h2>
-    <input type="number" id="memberId" placeholder="Member ID">
-    <button onclick="getMember()">Get Profile</button>
-    <p id="memberResponse"></p>
+        <h3>Get Member Profile</h3>
+        <input type="text" id="memberId" placeholder="Enter ID, Name, Email, or Phone">
+        <button onclick="getMember()">Get Profile</button>
+        <div id="memberResponse" class="response"></div>
 
-    <h2>3. Add Class</h2>
-    <input type="text" id="className" placeholder="Class Name">
-    <input type="text" id="classSchedule" placeholder="Schedule">
-    <input type="number" id="trainerId" placeholder="Trainer ID">
-    <button onclick="addClass()">Add Class</button>
-    <p id="classResponse"></p>
+        <h3>Renew Membership</h3>
+        <input type="number" id="renewMemberId" placeholder="Member ID">
+        <input type="text" id="newPlan" placeholder="New Plan">
+        <button onclick="renewMembership()">Renew Membership</button>
+        <div id="renewResponse" class="response"></div>
+    </div>
 
-    <h2>4. Get All Classes</h2>
-    <button onclick="getClasses()">View Classes</button>
-    <p id="classesResponse"></p>
+    <div class="test-section">
+        <h2>2. Search & Update Member Profile</h2>
+        <h3>Search Member</h3>
+        <p>Search by ID, Name, Email, or Phone Number</p>
+        <input type="text" id="searchValue" placeholder="Enter Member ID, Name, Email, or Phone">
+        <button onclick="searchMember()">Search</button>
+        <div id="searchResponse" class="response"></div>
 
-    <h2>5. Assign Trainer</h2>
-    <input type="number" id="assignClassId" placeholder="Class ID">
-    <input type="number" id="assignTrainerId" placeholder="Trainer ID">
-    <button onclick="assignTrainer()">Assign Trainer</button>
-    <p id="assignResponse"></p>
+        <h3>Edit & Update Profile</h3>
+        <input type="hidden" id="updateMemberId">
+        <input type="text" id="updateFirstName" placeholder="First Name">
+        <input type="text" id="updateLastName" placeholder="Last Name">
+        <input type="email" id="updateEmail" placeholder="Email">
+        <input type="tel" id="updatePhone" placeholder="Phone Number">
+        <input type="password" id="updatePassword" placeholder="New Password">
+        <button onclick="updateMemberProfile()">Save Changes</button>
+        <div id="updateResponse" class="response"></div>
+    </div>
 
-    <h2>6. Track Trainer Hours</h2>
-    <input type="number" id="trackTrainerId" placeholder="Trainer ID">
-    <input type="number" id="workHours" placeholder="Hours">
-    <button onclick="trackHours()">Track Hours</button>
-    <p id="trackResponse"></p>
+    <div class="test-section">
+        <h2>3. Membership Plans</h2>
+        <h3>View Membership Plans</h3>
+        <button onclick="getMembershipPlans()">View Plans</button>
+        <div id="planResponse" class="response"></div>
+    </div>
 
-    <h2>7. Renew Membership</h2>
-    <input type="number" id="renewMemberId" placeholder="Member ID">
-    <input type="text" id="newPlan" placeholder="New Plan">
-    <button onclick="renewMembership()">Renew</button>
-    <p id="renewResponse"></p>
+    <div class="test-section">
+        <h2>4. Class Management</h2>
+        <h3>Add Class</h3>
+        <input type="text" id="className" placeholder="Class Name">
+        <input type="text" id="classDescription" placeholder="Description">
+        <input type="number" id="classCapacity" placeholder="Capacity">
+        <input type="number" id="classDuration" placeholder="Duration (minutes)">
+        <button onclick="addClass()">Add Class</button>
+        <div id="classResponse" class="response"></div>
 
+        <h3>View All Classes</h3>
+        <button onclick="getClasses()">View Classes</button>
+        <div id="classesResponse" class="response"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>5. Trainer Management</h2>
+        <h3>Assign Trainer</h3>
+        <input type="number" id="assignTrainerClassId" placeholder="Class ID">
+        <input type="number" id="assignTrainerId" placeholder="Trainer ID">
+        <button onclick="assignTrainer()">Assign Trainer</button>
+        <div id="trainerResponse" class="response"></div>
+
+        <h3>Track Trainer Hours</h3>
+        <input type="number" id="trackTrainerId" placeholder="Trainer ID">
+        <input type="number" id="workHours" placeholder="Hours">
+        <input type="date" id="workDate">
+        <button onclick="trackHours()">Track Hours</button>
+        <div id="trackResponse" class="response"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>6. Class Schedule</h2>
+        <h3>Schedule Class</h3>
+        <input type="number" id="scheduleClassId" placeholder="Class ID">
+        <input type="number" id="scheduleTrainerId" placeholder="Trainer ID">
+        <input type="datetime-local" id="scheduleStart" placeholder="Start Time">
+        <input type="datetime-local" id="scheduleEnd" placeholder="End Time">
+        <input type="text" id="scheduleRoom" placeholder="Room Number">
+        <button onclick="scheduleClass()">Schedule Class</button>
+        <div id="scheduleResponse" class="response"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>7. Class Registration</h2>
+        <h3>Register for Class</h3>
+        <input type="number" id="regScheduleId" placeholder="Schedule ID">
+        <input type="number" id="regMemberId" placeholder="Member ID">
+        <button onclick="registerForClass()">Register</button>
+        <div id="registrationResponse" class="response"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>8. Database Table Explorer</h2>
+        <select id="tableSelector">
+            <option value="">Select a table</option>
+            <option value="members">Members</option>
+            <option value="membership_plans">Membership Plans</option>
+            <option value="member_subscriptions">Subscriptions</option>
+            <option value="trainers">Trainers</option>
+            <option value="classes">Classes</option>
+            <option value="class_schedule">Class Schedule</option>
+            <option value="class_registrations">Class Registrations</option>
+            <option value="trainer_hours">Trainer Hours</option>
+        </select>
+        <button onclick="viewTable()">Run Query</button>
+        <div id="tableViewer" style="max-height: 300px; overflow-y: auto; margin-top: 10px;">
+            <table id="dataTable" style="width: 100%; border-collapse: collapse;">
+                <thead id="tableHead"></thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Member Login</h2>
+        <input type="email" id="loginEmail" placeholder="Enter Email">
+        <input type="password" id="loginPassword" placeholder="Enter Password">
+        <button onclick="loginMember()">Login</button>
+        <div id="loginResponse" class="response"></div>
+    </div>
+    
+
+    <style>
+        #dataTable th, #dataTable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        #dataTable th {
+            background-color: #f2f2f2;
+            position: sticky;
+            top: 0;
+        }
+        #tableViewer {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
 </body>
 </html>

@@ -1,6 +1,43 @@
-# This is the Start of the Gym Website Project for Agile Development University project
+# Gym Website Project - Agile Development University Project
 
 
-The Gym Website Project is a project that aims to create a website for a gym. The website will be used to provide information about the gym, its services, and its facilities. The website will also be used to allow users to book appointments and make payments.
+## Features
+- User account creation and profile management
+- Class scheduling and booking
+- Subscription management
+- Facility information
+- Service details
+- Trainer management
 
-Users need to be able to create accounts and manage their profiles. They should also be able to view the gym's schedule and book classes. As well as amend subscriptions.
+
+## Installation & Setup
+
+1. Navigate to the javascript folder:
+![alt text](Website\Images\image.png)
+```
+cd Website\Backend\Javascript
+```
+
+2. Install required dependencies if required:
+```
+npm install express sqlite3
+```
+
+Note: If you encounter permission errors during installation, run:
+```
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+3. Start the server:
+```
+node server.js
+```
+![alt text](Website\Images\image-1.png)
+
+
+4. Try accessing APITest.html in your browser to test the API.
+
+
+
+
+

@@ -1,4 +1,4 @@
-# Gym Website Project - Agile Development University Project
+# Gym Website Project - Agile Development University Project for final year
 
 
 ## Features

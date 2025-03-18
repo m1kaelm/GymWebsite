@@ -6,28 +6,74 @@ body {
     background: #f4f4f4;
 }
 
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
 /* Header */
 header {
     background: #333;
     color: white;
     padding: 20px 0;
-    text-align: center;
 }
 
-nav ul {
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+nav ul.main-nav {
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
 }
 
-nav ul li {
+nav ul.main-nav li {
     display: inline;
     margin: 0 15px;
 }
 
-nav ul li a {
+nav ul.main-nav li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-signin {
+    background: #4CAF50;
+}
+
+.btn-register {
+    background: #2196F3;
 }
 
 /* Hero Section */
@@ -47,14 +93,9 @@ nav ul li a {
     font-size: 1.2em;
 }
 
-.btn {
-    display: inline-block;
+.hero .btn {
     margin-top: 15px;
-    padding: 10px 20px;
     background: red;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
 }
 
 /* Features */
@@ -78,19 +119,11 @@ footer {
     color: white;
 }
 
-
-
 /* PAGE SPECIFIC STYLES */
+
+/* Sign up */
 
 
 /* Index Page */
-
-
-
-
-
-
-
-
 
 /* About Us Page */

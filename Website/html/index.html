@@ -1,52 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitZone Gym</title>
-    <link rel="stylesheet" href="../Css/styles.css">
-</head>
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Gym</title>
+    <link rel="stylesheet" href="../Css/styles.css" />
+   <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+  <body>
     <header>
-        <div class="container">
-            <h1>FitZone Gym</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="classes.html">Classes</a></li>
-                    <li><a href="membership.html">Membership</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="container">
+        <h1>Flex Gym</h1>
+        <nav class="navigation">
+          <!-- Logo on the left corner -->
+          <a href="index.html" class="logo">
+            <img src="logo.jpg" alt="Gym Logo" style="height: 50px" />
+          </a>
+
+          <!-- Main navigation links  -->
+          <div>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="classes.html">Classes</a>
+            <a href="membership.html">Membership</a>
+          </div>
+
+          <!-- Login and register icons on the right corner -->
+          <div class="nav-btns">
+            <a href="login.html" title="Login">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+            <a href="signup.html" title="Register">
+              <i class="fas fa-user-plus"></i> Sign Up
+            </a>
+          </div>
+        </nav>
+
     </header>
 
     <section class="hero">
-        <h2>Train Hard, Stay Fit</h2>
-        <p>Join our gym and achieve your fitness goals with expert trainers and state-of-the-art facilities.</p>
-        <a href="membership.html" class="btn">Join Now</a>
+      <h2>Train Hard, Stay Fit</h2>
+      <p>
+        Join our gym and achieve your fitness goals with expert trainers and
+        state-of-the-art facilities.
+      </p>
+      <a href="membership.html" class="btn">Join Now</a>
     </section>
 
     <section class="features">
-        <div class="feature">
-            <h3>Modern Equipment</h3>
-            <p>Top-quality gym equipment for all training levels.</p>
-        </div>
-        <div class="feature">
-            <h3>Certified Trainers</h3>
-            <p>Experienced professionals to guide your journey.</p>
-        </div>
-        <div class="feature">
-            <h3>Flexible Classes</h3>
-            <p>Group and personal training sessions available.</p>
-        </div>
+      <div class="feature">
+        <h3>Modern Equipment</h3>
+        <p>Top-quality gym equipment for all training levels.</p>
+      </div>
+      <div class="feature">
+        <h3>Certified Trainers</h3>
+        <p>Experienced professionals to guide your journey.</p>
+      </div>
+      <div class="feature">
+        <h3>Flexible Classes</h3>
+        <p>Group and personal training sessions available.</p>
+      </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 FitZone Gym. All rights reserved.</p>
+      <p>&copy; 2025 Flex Gym. All rights reserved.</p>
     </footer>
-
-</body>
+  </body>
 </html>

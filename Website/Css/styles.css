@@ -1,96 +1,124 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
 }
 
 /* Header */
 header {
-    background: #333;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
+  background: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+  display: inline;
+  margin: 0 15px;
 }
 
 nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 /* Hero Section */
 .hero {
-    background: url('images/gym-hero.jpg') no-repeat center center/cover;
-    text-align: center;
-    padding: 100px 20px;
-    color: white;
+  background: url("images/gym-hero.jpg") no-repeat center center/cover;
+  text-align: center;
+  padding: 100px 20px;
+  color: white;
 }
 
 .hero h2 {
-    font-size: 2.5em;
-    margin: 0;
+  font-size: 2.5em;
+  margin: 0;
 }
 
 .hero p {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 .btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: red;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
 }
 
 /* Features */
 .features {
-    display: flex;
-    justify-content: space-around;
-    padding: 50px;
-    background: white;
-    text-align: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 50px;
+  background: white;
+  text-align: center;
 }
 
 .feature {
-    width: 30%;
+  width: 30%;
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 15px;
-    background: #222;
-    color: white;
+  text-align: center;
+  padding: 15px;
+  background: #222;
+  color: white;
 }
 
-
-
 /* PAGE SPECIFIC STYLES */
-
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+nav {
+  background: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  align-items: center;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: background 0.3s;
+}
+nav a:hover {
+  background: #f04e30;
+}
+.container {
+  padding: 20px;
+  text-align: center;
+}
+.logo,
+.nav-btns {
+  display: flex;
+}
+.nav-btns {
+  gap: 10px;
+}
+.logo img {
+  height: 100px;
+  width: auto;
+  max-width: 100%;
+  margin-right: 110px;
+}
 
 /* Index Page */
-
-
-
-
-
-
-
-
 
 /* About Us Page */

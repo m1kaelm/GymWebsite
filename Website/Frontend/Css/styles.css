@@ -6,6 +6,12 @@ body {
   background: #f4f4f4;
 }
 
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
 /* Header */
 header {
   background: #333;
@@ -28,6 +34,66 @@ nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+    background: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+nav ul.main-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul.main-nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul.main-nav li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-signin {
+    background: #4CAF50;
+}
+
+.btn-register {
+    background: #2196F3;
 }
 
 /* Hero Section */
@@ -47,6 +113,7 @@ nav ul li a {
   font-size: 1.2em;
 }
 
+<<<<<<< HEAD:Website/Css/styles.css
 .btn {
   display: inline-block;
   margin-top: 15px;
@@ -55,6 +122,11 @@ nav ul li a {
   color: white;
   text-decoration: none;
   border-radius: 5px;
+=======
+.hero .btn {
+    margin-top: 15px;
+    background: red;
+>>>>>>> 1b43427f875d00cb2a95bdfbd00ef0fdaf3111d3:Website/Frontend/Css/styles.css
 }
 
 /* Features */
@@ -79,6 +151,7 @@ footer {
 }
 
 /* PAGE SPECIFIC STYLES */
+<<<<<<< HEAD:Website/Css/styles.css
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -118,6 +191,11 @@ nav a:hover {
   max-width: 100%;
   margin-right: 110px;
 }
+=======
+
+/* Sign up */
+
+>>>>>>> 1b43427f875d00cb2a95bdfbd00ef0fdaf3111d3:Website/Frontend/Css/styles.css
 
 /* Index Page */
 

@@ -1,5 +1,196 @@
 const API_BASE = "http://localhost:3000/api"; // Ensure this matches your API server
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loginText = document.querySelector(".title-text .login");
+    const loginForm = document.querySelector("form.login");
+    const loginBtn = document.querySelector("label.login");
+    const signupBtn = document.querySelector("label.signup");
+    const signupLink = document.querySelector("form .signup-link a");
+    
+    signupBtn.onclick = (() => {
+        loginForm.style.marginLeft = "-50%";
+        loginText.style.marginLeft = "-50%";
+    });
+    
+    loginBtn.onclick = (() => {
+        loginForm.style.marginLeft = "0%";
+        loginText.style.marginLeft = "0%";
+    });
+    
+    signupLink.onclick = ((e) => {
+        e.preventDefault();
+        signupBtn.click();
+        return false;
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ====== MEMBERS API ======
 
 // Register a new member

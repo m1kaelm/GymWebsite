@@ -1,69 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitZone Gym - Sign In & Register</title>
-    <link rel="stylesheet" href="../Css/styles.css">
-    <link rel="stylesheet" href="../Css/signup.css">
-    
-</head>
-<body>
+    <link rel="stylesheet" href="../Css/styles.css" />
+    <link rel="stylesheet" href="../Css/signup.css" />
+  </head>
+  <body>
     <div class="wrapper">
-        <div class="title-text">
-            <div class="title login">FitZone Gym</div>
-            <div class="title signup">FitZone Gym</div>
+      <div class="title-text">
+        <div class="title login">FitZone Gym</div>
+        <div class="title signup">FitZone Gym</div>
+      </div>
+      <div class="form-container">
+        <div class="slide-controls">
+          <input type="radio" name="slide" id="login" checked />
+          <input type="radio" name="slide" id="signup" />
+          <label for="login" class="slide login">Sign In</label>
+          <label for="signup" class="slide signup">Sign Up</label>
+          <div class="slider-tab"></div>
         </div>
-        <div class="form-container">
-            <div class="slide-controls">
-                <input type="radio" name="slide" id="login" checked />
-                <input type="radio" name="slide" id="signup" />
-                <label for="login" class="slide login">Sign In</label>
-                <label for="signup" class="slide signup">Sign Up</label>
-                <div class="slider-tab"></div>
+        <div class="form-inner">
+          <form action="#" class="login">
+            <div class="field">
+              <label><strong>Email Address</strong></label>
+              <input type="text" placeholder="Enter your email" required />
             </div>
-            <div class="form-inner">
-                <form action="#" class="login">
-                    <div class="field">
-                        <label><strong>Email Address</strong></label>
-                        <input type="text" placeholder="Enter your email" required />
-                    </div>
-                    <div class="field">
-                        <label><strong>Password</strong></label>
-                        <input type="password" placeholder="Enter your password" required />
-                    </div>
-                    <div class="field btn">
-                        <input type="submit" value="Sign In" />
-                    </div>
-                    <div class="signup-link">
-                        Don't have an account? <a href="">Sign Up</a>
-                    </div>
-                </form>
-                <form action="#" class="signup">
-                    <div class="field">
-                        <label><strong>Full Name</strong></label>
-                        <input type="text" placeholder="Enter your name" required />
-                    </div>
-                    <div class="field">
-                        <label><strong>Email Address</strong></label>
-                        <input type="email" placeholder="Enter your email" required />
-                    </div>
-                    <div class="field">
-                        <label><strong>Password</strong></label>
-                        <input type="password" placeholder="Create a password" required />
-                    </div>
-                    <div class="field">
-                        <label><strong>Confirm Password</strong></label>
-                        <input type="password" placeholder="Confirm your password" required />
-                    </div>
-                    <div class="field btn">
-                        <input type="submit" value="Sign Up" />
-                    </div>
-                </form>
+            <div class="field">
+              <label><strong>Password</strong></label>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                required
+              />
             </div>
+            <div class="field btn">
+              <input type="submit" value="Sign In" />
+            </div>
+            <div class="signup-link">
+              Don't have an account? <a href="">Sign Up</a>
+            </div>
+          </form>
+          <form action="#" class="signup">
+            <div class="field">
+              <label><strong>Full Name</strong></label>
+              <input type="text" placeholder="Enter your name" required />
+            </div>
+            <div class="field">
+              <label><strong>Email Address</strong></label>
+              <input type="email" placeholder="Enter your email" required />
+            </div>
+            <div class="field">
+              <label><strong>Password</strong></label>
+              <input type="password" placeholder="Create a password" required />
+            </div>
+            <div class="field">
+              <label><strong>Confirm Password</strong></label>
+              <input
+                type="password"
+                placeholder="Confirm your password"
+                required
+              />
+            </div>
+            <div class="field btn">
+              <input type="submit" value="Sign Up" />
+            </div>
+          </form>
         </div>
+      </div>
     </div>
 
     <script src="../Javascript/signup.js"></script>
-</body>
+  </body>
 </html>

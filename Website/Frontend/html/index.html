@@ -11,8 +11,11 @@
     />
   </head>
   <body>
-    <header>
-      <h1>Flex Gym</h1>
+    <!-- 🔥 Background Video -->
+    <video id="bgVideo" autoplay muted playsinline></video>
+
+    <header class="header">
+      
       <nav class="navigation">
         <!-- Logo on the left corner -->
         <a href="index.html" class="logo">
@@ -22,24 +25,25 @@
         <!-- Main navigation links  -->
         <div>
           <a href="index.html">Home</a>
-          <a href="about.html">About</a>
+          
           <a href="classes.html">Classes</a>
           <a href="membership.html">Membership</a>
+          <a href="about.html">About</a>
         </div>
 
         <!-- Login and register icons on the right corner -->
         <div class="nav-btns">
-          <a href="signup.html" title="Login">
-            <i class="fas fa-sign-in-alt"></i> Login
-          </a>
           <a href="signup.html" title="Register">
             <i class="fas fa-user-plus"></i> Sign Up
+          </a>
+          <a href="signup.html" title="Login">
+            <i class="fas fa-sign-in-alt"></i> Login
           </a>
         </div>
       </nav>
     </header>
 
-    <section class="hero">
+    <section class="index_hero">
       <h2>Train Hard, Stay Fit</h2>
       <p>
         Join our gym and achieve your fitness goals with expert trainers and
@@ -66,5 +70,8 @@
     <footer>
       <p>&copy; 2025 Flex Gym. All rights reserved.</p>
     </footer>
+
+    <!-- ✅ Load Background Video Script -->
+    <script src="../Javascript/bg-video.js"></script>
   </body>
 </html>

@@ -12,17 +12,11 @@ body {
   max-width: 1200px;
 }
 
-/* Header */
-header {
-  background: #333;
-  color: white;
-  padding: 20px 0;
-  text-align: center;
-}
 
 nav ul {
   list-style: none;
   padding: 0;
+  
 }
 
 nav ul li {
@@ -34,7 +28,7 @@ nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  background: #333;
+  background: #f8f7f7;
   color: white;
   padding: 20px 0;
 }
@@ -43,10 +37,15 @@ header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #2196f3;
 }
 
 header h1 {
   margin: 0;
+  color: #ffffff;
+}
+header{
+  background-color: #000000a9;
 }
 
 nav {
@@ -54,6 +53,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  
 }
 
 nav ul.main-nav {
@@ -66,6 +66,7 @@ nav ul.main-nav {
 nav ul.main-nav li {
   display: inline;
   margin: 0 15px;
+  
 }
 
 nav ul.main-nav li a {
@@ -97,20 +98,23 @@ nav ul.main-nav li a {
 }
 
 /* Hero Section */
-.hero {
-  background: url("images/gym-hero.jpg") no-repeat center center/cover;
+.index_hero {
+  background: rgba(0, 0, 0, 0.623);
   text-align: center;
   padding: 100px 20px;
   color: black;
+  
 }
 
-.hero h2 {
+.index_hero h2 {
   font-size: 2.5em;
   margin: 0;
+  color: #fff;
 }
 
-.hero p {
+.index_hero p {
   font-size: 1.2em;
+  color: #fff;
 }
 
 .btn {
@@ -142,7 +146,10 @@ footer {
   padding: 15px;
   background: #222;
   color: white;
-  margin-top: 250px;
+  position: bottom;
+  bottom: 0;
+  width: 100%;
+  left: 0;
 }
 
 /* PAGE SPECIFIC STYLES */
@@ -224,3 +231,240 @@ nav a:hover {
 /* Index Page */
 
 /* About Us Page */
+
+
+
+
+/*Background Video*/
+#bgVideo {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;  /* Reduce padding */
+  height: 60px;          /* Set fixed height if needed */
+  color: #2222228a;
+  background-color: #0000008e;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+  font-size: 1rem;
+  
+  
+}
+.navigation > * {
+  display: flex;
+  align-items: center;
+}
+
+.navigation img {
+  height: 50px; 
+  object-fit: contain;
+}
+
+
+
+
+
+/* Sign up Page */
+
+
+
+
+/* === PAGE WRAPPER === */
+.page-signup {
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === NAVIGATION === */
+.page-signup .navigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #444;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 40px;
+}
+
+.page-signup .logo img {
+  height: 40px;
+}
+
+/* === FORM CONTAINER === */
+.page-signup .wrapper {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* === TITLE === */
+.page-signup .title-text {
+  display: flex;
+  width: 200%;
+  transition: margin-left 0.3s ease;
+}
+
+.page-signup .title-text .title {
+  width: 50%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+}
+
+/* === TOGGLE BUTTONS === */
+.page-signup .slide-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.page-signup .slide-controls label {
+  flex: 1;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  background: #eee;
+  border-radius: 5px 5px 0 0;
+  transition: background 0.3s ease;
+}
+
+.page-signup .slide-controls input[type="radio"] {
+  display: none;
+}
+
+.page-signup .slide-controls input#login:checked ~ label.login,
+.page-signup .slide-controls input#signup:checked ~ label.signup {
+  background: #f44336;
+  color: #fff;
+}
+
+.page-signup .slider-tab {
+  height: 3px;
+  background: #f44336;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: left 0.3s ease;
+}
+
+/* Move tab when signup is active */
+.page-signup input#signup:checked ~ .slider-tab {
+  left: 50%;
+}
+
+/* === FORM INNER (Side-by-side layout) === */
+.page-signup .form-inner {
+  display: flex;
+  width: 200%;
+  transition: margin-left 0.3s ease;
+}
+
+/* === INDIVIDUAL FORMS === */
+.page-signup form.login,
+.page-signup form.signup {
+  width: 50%;
+  padding: 0 1rem;
+}
+
+.field i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+/* === FIELD STYLING === */
+.page-signup .field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.page-signup input[type="text"],
+.page-signup input[type="email"],
+.page-signup input[type="password"] {
+  padding: 0.75rem;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.page-signup .form-inner .field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.page-signup .form-inner .field label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #222;
+}
+
+.page-signup .form-inner .field input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  background: #fff;
+}
+
+.page-signup .form-inner .btn input[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.page-signup .form-inner .btn input[type="submit"]:hover {
+  background: #d32f2f;
+}
+
+
+/* === SIGNUP LINK === */
+.page-signup .signup-link {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.page-signup .signup-link a {
+  color: #f44336;
+  font-weight: bold;
+  text-decoration: none;
+}

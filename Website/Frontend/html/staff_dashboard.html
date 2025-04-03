@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flex Gym - Staff Dashboard</title>
+  <link rel="stylesheet" href="../Css/styles.css" />
+  <link rel="stylesheet" href="../Css/staff_dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body class="bg-cover-center bg-overlay">
+
+  <!-- Navigation -->
+  <nav class="navigation">
+    <a href="index.html" class="logo" aria-label="Gym Home"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="schedule_admin_dashboard.html">Manage Classes</a>
+      <a href="members.html">Members</a>
+      <a href="staff_dashboard.html" class="active">Dashboard</a>
+    </div>
+    <div class="navigation-btns">
+      <a href="#" class="btn-signout">Sign Out</a>
+    </div>
+  </nav>
+
+  <!-- Staff Dashboard Content -->
+  <div class="dashboard-container">
+    <h1>Welcome, <span id="staff-name">Staff Member</span>!</h1>
+
+    <div class="dashboard-grid">
+      <!-- Manage Members -->
+      <div class="dashboard-card">
+        <h2>Manage Member Profiles</h2>
+        <p>Search, view, and edit member information. Update subscriptions as needed.</p>
+        <a href="members.html" class="btn-update">Go to Members</a>
+      </div>
+
+      <!-- Class Scheduling -->
+      <div class="dashboard-card">
+        <h2>Class & Activity Scheduling</h2>
+        <p>Create, update, and assign trainers to classes. Manage class details and rooms.</p>
+        <a href="schedule_admin_dashboard.html" class="btn-update">Manage Schedule</a>
+      </div>
+
+      <!-- Trainer Assignments -->
+      <div class="dashboard-card">
+        <h2>Trainer Assignments</h2>
+        <p>Assign trainers to scheduled classes and track working hours and sessions.</p>
+        <a href="trainers.html" class="btn-update">Assign Trainers</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../Javascript/logout.js"></script>
+  <script>
+    // Load name from session/local storage
+    const name = localStorage.getItem("userName");
+    if (name) document.getElementById("staff-name").textContent = name;
+  </script>
+</body>
+</html>

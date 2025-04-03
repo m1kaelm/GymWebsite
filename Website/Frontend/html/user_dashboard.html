@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flex Gym - Member Dashboard</title>
+  <link rel="stylesheet" href="../Css/styles.css" />
+  <link rel="stylesheet" href="../Css/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body class="bg-cover-center bg-overlay">
+  <!-- Navigation -->
+  <nav class="navigation">
+    <a href="index.html" class="logo" aria-label="Gym Home"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+    </div>
+    <div class="navigation-btns">
+      <a href="#" class="btn-signout">Sign Out</a>
+    </div>
+  </nav>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    <h1>Welcome, <span id="user-name">Member</span>!</h1>
+
+    <!-- Tab Navigation -->
+    <div class="dashboard-tabs">
+      <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+      <button class="tab-btn" data-tab="profile">My Profile</button>
+      <button class="tab-btn" data-tab="membership">My Membership</button>
+      <button class="tab-btn" data-tab="classes">My Classes</button>
+    </div>
+
+    <!-- Section: Dashboard Overview -->
+    <div class="dashboard-section" id="dashboard-section">
+      <div class="dashboard-summary">
+        <div class="summary-card">
+          <h3>Upcoming Classes</h3>
+          <ul id="summary-classes">
+            <li>Loading...</li>
+          </ul>
+        </div>
+        <div class="summary-card">
+          <h3>Next Payment Due</h3>
+          <p><strong>End Date:</strong> <span id="summary-end-date">Loading...</span></p>
+          <button id="manage-membership-btn">Manage Membership</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Profile -->
+    <div class="dashboard-section" id="profile-section" style="display: none;">
+      <h2>Edit My Profile</h2>
+      <form id="profile-form">
+        <label>First Name:
+          <input type="text" id="firstName" required />
+        </label>
+        <label>Last Name:
+          <input type="text" id="lastName" required />
+        </label>
+        <label>Email:
+          <input type="email" id="email" required />
+        </label>
+        <label>Phone:
+          <input type="text" id="phone" />
+        </label>
+        <label>Password:
+          <input type="password" id="password" placeholder="Leave blank to keep current" />
+        </label>
+        <button type="submit">Update Profile</button>
+      </form>
+    </div>
+
+    <!-- Section: Membership -->
+    <div class="dashboard-section" id="membership-section" style="display: none;">
+      <h2>My Membership Details</h2>
+      <p><strong>Plan:</strong> <span id="plan-name">...</span></p>
+      <p><strong>Start:</strong> <span id="plan-start-date">...</span></p>
+      <p><strong>End:</strong> <span id="plan-end-date">...</span></p>
+      <button id="renew-membership-btn">Renew Membership</button>
+    </div>
+
+    <!-- Section: My Classes -->
+    <div class="dashboard-section" id="classes-section" style="display: none;">
+      <h2>My Classes</h2>
+      <div class="classes-container">
+        <div class="available-classes">
+          <h3>Available Classes</h3>
+          <ul id="available-classes-list"></ul>
+        </div>
+        <div class="registered-classes">
+          <h3>Registered Classes</h3>
+          <ul id="registered-classes-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../Javascript/user_dashboard.js"></script>
+  <script src="../Javascript/logout.js"></script>
+</body>
+</html>

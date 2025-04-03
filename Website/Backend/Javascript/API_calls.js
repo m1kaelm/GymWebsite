@@ -165,10 +165,14 @@ router.post('/class-schedule/add', (req, res) => {
 
 // Get Class Schedule
 router.get('/class-schedule', (req, res) => {
-    db.all("SELECT * FROM class_schedule", [], (err, rows) => {
+    db.all(`
+        SELECT cs.*, t.first_name || ' ' || t.last_name AS trainer_name
+        FROM class_schedule cs
+        LEFT JOIN trainers t ON cs.trainer_id = t.id
+      `, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
-    });
+      });
 });
 
 // ====== TRAINERS API ======
@@ -271,38 +275,39 @@ router.get('/database/:table', (req, res) => {
 
 const bcrypt = require('bcrypt'); // Hashing for password security
 
-// ====== MEMBER LOGIN ======
-router.post('/members/login', (req, res) => {
+// ====== LOGIN ======
+router.post('/login', (req, res) => {
     const { email, password } = req.body;
 
-    console.log(`🔍 [VERBOSE] Login Attempt | Email: "${email}" | Password Entered: "${password}"`);
+    const roles = [
+        { table: "admins", role: "admin", idField: "id", nameField: "first_name" },
+        { table: "trainers", role: "trainer", idField: "id", nameField: "first_name" },
+        { table: "staff", role: "staff", idField: "id", nameField: "first_name" },
+        { table: "members", role: "member", idField: "id", nameField: "first_name" }
+    ];
 
-    if (!email || !password) {
-        return res.status(400).json({ error: "Email and password are required" });
-    }
-
-    // Retrieve user by email
-    db.get("SELECT * FROM members WHERE email = ?", [email], (err, member) => {
-        if (err) {
-            console.error("❌ [VERBOSE] Database Error:", err);
-            return res.status(500).json({ error: "Database error" });
-        }
-
-        if (!member) {
-            console.log("❌ [VERBOSE] Login Failed | Member Not Found");
+    const tryNext = (index) => {
+        if (index >= roles.length) {
             return res.status(401).json({ error: "Invalid email or password" });
         }
 
-        console.log(`🔍 [VERBOSE] Stored Password: "${member.password}"`);
+        const { table, role, idField, nameField } = roles[index];
+        db.get(`SELECT * FROM ${table} WHERE email = ?`, [email], (err, user) => {
+            if (err) return res.status(500).json({ error: "Database error" });
 
-        // Compare passwords (REMOVE bcrypt if using plain text passwords)
-        if (password !== member.password) {
-            console.log("❌ [VERBOSE] Login Failed | Incorrect Password");
-            return res.status(401).json({ error: "Invalid email or password" });
-        }
+            if (!user || user.password !== password) {
+                return tryNext(index + 1); // Try next role
+            }
 
-        console.log(`✅ [VERBOSE] Login Successful | Member ID: ${member.id}`);
-        res.json({ message: "Login successful", memberId: member.id, name: member.first_name });
-    });
+            return res.json({
+                message: "Login successful",
+                userId: user[idField],
+                name: user[nameField],
+                role: role
+            });
+        });
+    };
+
+    tryNext(0);
 });
 

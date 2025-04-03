@@ -98,6 +98,28 @@ db.serialize(() => {
         notes TEXT,
         FOREIGN KEY (trainer_id) REFERENCES trainers(id)
     )`);
+
+    // Staff table
+    db.run(`CREATE TABLE IF NOT EXISTS staff (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        first_name TEXT NOT NULL,
+        last_name TEXT NOT NULL,
+        email TEXT UNIQUE NOT NULL,
+        password TEXT NOT NULL,
+        phone_number TEXT,
+        position TEXT,
+        status TEXT DEFAULT 'active'
+    )`);
+
+    // Admins table
+    db.run(`CREATE TABLE IF NOT EXISTS admins (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        first_name TEXT NOT NULL,
+        last_name TEXT NOT NULL,
+        email TEXT UNIQUE NOT NULL,
+        password TEXT NOT NULL
+    )`);
+
 });
 
 // Create indexes for better performance
@@ -111,6 +133,15 @@ db.serialize(() => {
 
 // Add test data
 db.serialize(() => {
+
+    // Insert test staff
+    db.run(`INSERT OR IGNORE INTO staff (first_name, last_name, email, password, phone_number, position)
+        VALUES ('Emily', 'Brown', 'emily.brown@gym.com', 'admin123', '555-9999', 'Manager')`);
+
+    // Insert test admin
+    db.run(`INSERT OR IGNORE INTO admins (first_name, last_name, email, password)
+        VALUES ('Super', 'Admin', 'admin@gym.com', 'rootadmin')`);
+
     // Insert test membership plan
     db.run(`INSERT OR IGNORE INTO membership_plans (name, description, duration_months, price) 
         VALUES ('Premium Plan', 'Full access to all facilities', 1, 15.99)`);

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Gym - Sign Up</title>
+    <link rel="stylesheet" href="../Css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body class="bg-cover-center bg-overlay">
+    <!-- Navigation Bar -->
+    <navigation class="navigation">
+      <a href="index.html" class="logo"></a>
+    
+      <!-- Main Navigation Links -->
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="classes.html">Classes</a>
+        <a href="membershipInfo.html">Membership</a>
+        <a href="about.html">About</a>
+      </div>
+    
+      <!-- Auth Buttons (Sign Up & Login) -->
+      <div class="navigation-btns">
+        <a href="login.html" title="Login">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+      </div>
+    </navigation>
+
+    <!-- Multi-Step Registration -->
+    <div class="registration-container">
+      <h1>Join Flex Gym</h1>
+      <div id="progress-bar">Step 1 of 5</div>
+
+      <form id="registration-form">
+        <!-- Step 1: Location -->
+        <section class="form-step active" data-step="1">
+          <h2>Select Your Location</h2>
+          <select name="location" required>
+            <option value="">Choose a location</option>
+            <option value="London">London</option>
+            <option value="Manchester">Manchester</option>
+            <option value="Birmingham">Birmingham</option>
+          </select>
+          <button type="button" class="next">Continue</button>
+        </section>
+
+        <!-- Step 2: Membership -->
+        <section class="form-step" data-step="2">
+          <h2>Select Your Membership</h2>
+          <label><input type="radio" name="membership" value="basic" required> Basic</label>
+          <label><input type="radio" name="membership" value="plus"> Plus</label>
+          <label><input type="radio" name="membership" value="premium"> Premium</label>
+          <button type="button" class="prev">Back</button>
+          <button type="button" class="next">Continue</button>
+        </section>
+
+        <!-- Step 3: Account Details -->
+        <section class="form-step" data-step="3">
+          <h2>Account Details</h2>
+          <input type="text" name="firstName" placeholder="First Name" required>
+          <input type="text" name="lastName" placeholder="Last Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <input type="date" name="dob" required>
+          <select name="gender">
+            <option value="">Gender (Optional)</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <input type="text" name="address" placeholder="Address" required>
+          <button type="button" class="prev">Back</button>
+          <button type="button" class="next">Continue</button>
+        </section>
+
+        <!-- Step 4: Bank Details -->
+        <section class="form-step" data-step="4">
+          <h2>Bank Details</h2>
+          <input type="text" name="cardNumber" placeholder="Card Number" required>
+          <input type="text" name="expiry" placeholder="MM/YY" required>
+          <input type="text" name="cvv" placeholder="CVV" required>
+          <button type="button" class="prev">Back</button>
+          <button type="button" class="next">Continue</button>
+        </section>
+
+        <!-- Step 5: Confirm -->
+        <section class="form-step" data-step="5">
+          <h2>Confirm Your Details</h2>
+          <p>Review everything before submitting.</p>
+          <label><input type="checkbox" required> I agree to the Terms and Conditions</label>
+          <button type="button" class="prev">Back</button>
+          <button type="submit">Confirm & Join</button>
+        </section>
+      </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../Javascript/registration.js"></script>
+  </body>
+</html>

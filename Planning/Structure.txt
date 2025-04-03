@@ -3,7 +3,7 @@
 │── styles.css  (CSS for styling)
 │── about.html  (About Page)
 │── classes.html  (Classes & Schedule)
-│── membership.html  (Membership Plans)
+│── membershipInfo.html  (Membership Plans)
 │── contact.html  (Contact Page)
 │── images/  (Store gym-related images)
 │── scripts.js  (JavaScript for interactivity)

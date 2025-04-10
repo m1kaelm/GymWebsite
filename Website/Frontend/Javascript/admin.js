@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     loadTableBtn.addEventListener("click", handleTableLoad);
   }
 
+  
+
   // Member Management Functions
   function handleSearch() {
     const type = document.getElementById("search-type").value;
@@ -63,37 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function loadMembers() {
-    fetch("http://localhost:3000/api/members")
-      .then(res => res.json())
-      .then(members => {
-        allMembers = members;
-        renderMemberTable(members);
-      })
-      .catch(err => {
-        console.error("Error loading members:", err);
-      });
-  }
-
-  function renderMemberTable(members) {
-    const tbody = document.querySelector("#members-table tbody");
-    tbody.innerHTML = "";
-
-    members.forEach(member => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${member.id}</td>
-        <td>${member.first_name} ${member.last_name}</td>
-        <td>${member.email}</td>
-        <td>${member.phone_number}</td>
-        <td>
-          <button onclick="editMember(${member.id})">Edit</button>
-          <button onclick="deleteMember(${member.id})">Delete</button>
-        </td>
-      `;
-      tbody.appendChild(row);
-    });
-  }
+  
 
   // Navigation Functions
   function showSection(id) {
@@ -164,6 +136,38 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 });
+
+function renderMemberTable(members) {
+  const tbody = document.querySelector("#members-table tbody");
+  tbody.innerHTML = "";
+
+  members.forEach(member => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${member.id}</td>
+      <td>${member.first_name} ${member.last_name}</td>
+      <td>${member.email}</td>
+      <td>${member.phone_number}</td>
+      <td>
+        <button onclick="editMember(${member.id})">Edit</button>
+        <button onclick="deleteMember(${member.id})">Delete</button>
+      </td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+function loadMembers() {
+  fetch("http://localhost:3000/api/members")
+    .then(res => res.json())
+    .then(members => {
+      allMembers = members;
+      renderMemberTable(members);
+    })
+    .catch(err => {
+      console.error("Error loading members:", err);
+    });
+}
 
 // Member Actions
 function editMember(id) {
@@ -321,4 +325,193 @@ function openScheduleForm(classId) {
   })
     .then(res => res.json())
     .then(msg => alert(msg.message || "Class scheduled."));
+}
+
+function deleteMember(id) {
+  if (confirm("Are you sure you want to delete this member?")) {
+    fetch(`http://localhost:3000/api/members/${id}`, {
+      method: "DELETE"
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message || "Member deleted.");
+        loadMembers();  // Reload the member list
+      })
+      .catch(err => {
+        console.error("Failed to delete member:", err);
+        alert("Failed to delete member.");
+      });
+  }
+}
+
+// Adding New Member
+document.getElementById("add-member-btn").addEventListener("click", () => {
+  const firstName = document.getElementById("new-member-firstname").value;
+  const lastName = document.getElementById("new-member-lastname").value;
+  const email = document.getElementById("new-member-email").value;
+  const phone = document.getElementById("new-member-phone").value;
+  const password = document.getElementById("new-member-password").value;
+
+  fetch("http://localhost:3000/api/members/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone_number: phone,
+      password: password
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || "Member added successfully");
+      
+      // Load members inside here after adding
+      fetch("http://localhost:3000/api/members")
+        .then(res => res.json())
+        .then(members => {
+          allMembers = members;
+          renderMemberTable(members);
+        })
+        .catch(err => {
+          console.error("Error loading members:", err);
+        });
+    })
+    .catch(err => {
+      console.error("Failed to add member:", err);
+      alert("Failed to add member.");
+    });
+});
+
+
+// Handle adding new class
+document.getElementById("add-class-btn").addEventListener("click", () => {
+  const name = document.getElementById("new-class-name").value;
+  const description = document.getElementById("new-class-description").value;
+  const capacity = document.getElementById("new-class-capacity").value;
+  const duration = document.getElementById("new-class-duration").value;
+
+  fetch("http://localhost:3000/api/classes/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: name,
+      description: description,
+      capacity: capacity,
+      duration_minutes: duration
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert(data.message || "Class added successfully");
+    loadClasses();  // Reload the classes list
+  })
+  .catch(err => {
+    console.error("Failed to add class:", err);
+    alert("Failed to add class.");
+  });
+});
+
+
+function deleteClass(id) {
+  if (confirm("Are you sure you want to delete this class?")) {
+    fetch(`http://localhost:3000/api/classes/${id}`, {
+      method: "DELETE"
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message || "Class deleted.");
+        loadClasses();  // Reload the class list
+      })
+      .catch(err => {
+        console.error("Failed to delete class:", err);
+        alert("Failed to delete class.");
+      });
+  }
+}
+
+// Load all classes
+function loadClasses() {
+  fetch("http://localhost:3000/api/classes")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("classes-output");
+      container.innerHTML = `
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Capacity</th><th>Duration</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            ${data.map(cls => `
+              <tr>
+                <td>${cls.id}</td>
+                <td>${cls.name}</td>
+                <td>${cls.capacity}</td>
+                <td>${cls.duration_minutes} mins</td>
+                <td>
+                  <button onclick="openScheduleForm(${cls.id})">Schedule</button>
+                  <button onclick="deleteClass(${cls.id})">Delete</button>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    });
+}
+
+
+// Delete class
+function deleteClass(id) {
+  if (confirm("Are you sure you want to delete this class?")) {
+    fetch(`http://localhost:3000/api/classes/${id}`, {
+      method: "DELETE"
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message || "Class deleted.");
+        loadClasses();  // Reload the classes list
+      })
+      .catch(err => {
+        console.error("Failed to delete class:", err);
+        alert("Failed to delete class.");
+      });
+  }
+}
+
+
+// Open the schedule form
+function openScheduleForm(classId) {
+  const form = document.getElementById("schedule-class-form");
+  form.style.display = "block"; // Show the form
+
+  document.getElementById("schedule-class-btn").onclick = function() {
+    const trainerId = document.getElementById("trainer-id").value;
+    const startTime = document.getElementById("start-time").value;
+    const endTime = document.getElementById("end-time").value;
+    const roomNumber = document.getElementById("room-number").value;
+
+    fetch("http://localhost:3000/api/class-schedule/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        class_id: classId,
+        trainer_id: trainerId,
+        start_time: startTime,
+        end_time: endTime,
+        room_number: roomNumber
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message || "Class scheduled.");
+        form.style.display = "none";  // Hide the form
+        loadClasses();  // Reload the classes list
+      })
+      .catch(err => {
+        console.error("Failed to schedule class:", err);
+        alert("Failed to schedule class.");
+      });
+  };
 }

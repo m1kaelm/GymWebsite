@@ -120,7 +120,20 @@
           </thead>
           <tbody></tbody>
         </table>
-      </div>
+
+         <!-- Add New Member Form (Add inside manage-members section) -->
+        <div id="add-member-form" class="form-container">
+          <h3>Add New Member</h3>
+          <input type="text" id="new-member-firstname" placeholder="First Name" required minlength="1">
+          <input type="text" id="new-member-lastname" placeholder="Last Name" required minlength="1">
+          <input type="email" id="new-member-email" placeholder="Email" required minlength="1">
+          <input type="tel" id="new-member-phone" placeholder="Phone" required minlength="1">
+          <input type="password" id="new-member-password" placeholder="Password" required minlength="1">
+          <button id="add-member-btn">Add Member</button>
+        </div>      </div>
+
+     
+
 
       <div id="manage-staff" class="admin-section" style="display: none;">
         <h2>Manage Staff</h2>
@@ -165,6 +178,24 @@
         <h2>Manage Classes</h2>
         <p>Create, schedule, or remove class types and sessions.</p>
       
+
+        <!-- Add New Class Form (Add inside manage-classes section) -->
+        <!-- Add New Class Form -->
+        <div id="add-class-form" class="form-container">
+          <h3>Add New Class</h3>
+          <input type="text" id="new-class-name" placeholder="Class Name" required />
+          <input type="text" id="new-class-description" placeholder="Class Description" required />
+          <input type="number" id="new-class-capacity" placeholder="Class Capacity" required />
+          <input type="number" id="new-class-duration" placeholder="Class Duration (mins)" required />
+          <button id="add-class-btn">Add Class</button>
+        </div>
+
+
+        <td>
+          <button onclick="deleteClass(${cls.id})">Delete</button>
+        </td>
+        
+
         <div id="classes-output">
           <table id="classes-table">
             <thead>
@@ -184,6 +215,21 @@
           </table>
         </div>
       </div>
+
+      <!-- Schedule Class Form (appears when clicking 'Schedule' button) -->
+      <div id="schedule-class-form" class="form-container" style="display: none;">
+        <h3>Schedule Class</h3>
+        <label for="trainer-id">Trainer ID:</label>
+        <input type="text" id="trainer-id" required />
+        <label for="start-time">Start Time:</label>
+        <input type="datetime-local" id="start-time" required />
+        <label for="end-time">End Time:</label>
+        <input type="datetime-local" id="end-time" required />
+        <label for="room-number">Room Number:</label>
+        <input type="text" id="room-number" required />
+        <button id="schedule-class-btn">Schedule Class</button>
+      </div>
+
       
     </div>
 

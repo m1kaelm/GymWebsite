@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fetch("http://localhost:3000/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", 
         body: JSON.stringify({ email, password })
       })
         .then(res => res.json())
@@ -17,10 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
           if (data.error) {
             alert(data.error);
           } else {
+            // Store username and role info in localStorage
             localStorage.setItem("userId", data.userId);
             localStorage.setItem("userName", data.name);
             localStorage.setItem("role", data.role);
-      
+  
             switch (data.role) {
               case "admin": window.location.href = "admin_dashboard.html"; break;
               case "trainer": window.location.href = "trainer_dashboard.html"; break;

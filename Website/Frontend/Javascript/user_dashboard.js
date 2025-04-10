@@ -1,12 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const name = localStorage.getItem("userName");
-    const userId = localStorage.getItem("userId");
-  
-    if (!userId) return (window.location.href = "login.html");
-  
+  fetch("http://localhost:3000/api/session", { credentials: "include" })
+    .then(res => {
+      if (!res.ok) {
+        console.error("User dashboard error:", res.status);
+        throw new Error("Failed to load user dashboard");
+      }
+      return res.json();
+    })
+    .then(data => {
+      const user = data.user;
+      localStorage.setItem("userId", user.id);
+      localStorage.setItem("userName", user.name);
+      localStorage.setItem("role", user.role);
+      initDashboard(user.id, user.name);
+    })
+    .catch(() => {
+      window.location.href = "login.html";
+    });
+
+  function initDashboard(userId, name) {
     document.getElementById("user-name").textContent = name;
-  
-    // Tabs
+
     const tabButtons = document.querySelectorAll(".tab-btn");
     const sections = {
       dashboard: document.getElementById("dashboard-section"),
@@ -14,16 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
       membership: document.getElementById("membership-section"),
       classes: document.getElementById("classes-section"),
     };
-  
+
     tabButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         tabButtons.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-  
+
         Object.values(sections).forEach((sec) => (sec.style.display = "none"));
         const target = btn.dataset.tab;
         sections[target].style.display = "block";
-  
+
         if (target === "dashboard") {
           loadMembershipSummary(userId);
           loadClassSummary(userId);
@@ -33,8 +47,23 @@ document.addEventListener("DOMContentLoaded", () => {
         if (target === "profile") loadProfile(userId);
       });
     });
-  
-    // === Load Member Profile ===
+
+    document.getElementById("profile-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      fetch(`http://localhost:3000/api/members/${userId}/update`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first_name: document.getElementById("firstName").value,
+          last_name: document.getElementById("lastName").value,
+          email: document.getElementById("email").value,
+          phone_number: document.getElementById("phone").value,
+        }),
+      })
+        .then((res) => res.json())
+        .then((msg) => alert(msg.message || "Updated!"));
+    });
+
     function loadProfile(id) {
       fetch(`http://localhost:3000/api/members/${id}`)
         .then((res) => res.json())
@@ -47,26 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(() => alert("Failed to load profile."));
     }
-  
-    document
-      .getElementById("profile-form")
-      .addEventListener("submit", (e) => {
-        e.preventDefault();
-        fetch(`http://localhost:3000/api/members/${userId}/update`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            first_name: document.getElementById("firstName").value,
-            last_name: document.getElementById("lastName").value,
-            email: document.getElementById("email").value,
-            phone_number: document.getElementById("phone").value,
-          }),
-        })
-          .then((res) => res.json())
-          .then((msg) => alert(msg.message || "Updated!"));
-      });
-  
-    // === Load Membership Info ===
+
     function loadMembership(id) {
       fetch(`http://localhost:3000/api/members/${id}/subscription`)
         .then((res) => res.json())
@@ -77,21 +87,19 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(() => alert("Failed to load membership details."));
     }
-  
-    // === Load Classes (Registered + Available) ===
+
     function loadClasses(userId) {
-      // Registered Classes
       fetch(`http://localhost:3000/api/class-registrations/${userId}`)
         .then((res) => res.json())
         .then((data) => {
           const list = document.getElementById("registered-classes-list");
           list.innerHTML = "";
-  
+
           if (!Array.isArray(data) || data.length === 0) {
             list.innerHTML = "<li>No registered classes.</li>";
             return;
           }
-  
+
           data.forEach((cls) => {
             const li = document.createElement("li");
             li.innerHTML = `
@@ -101,14 +109,13 @@ document.addEventListener("DOMContentLoaded", () => {
             list.appendChild(li);
           });
         });
-  
-      // Available Classes
+
       fetch("http://localhost:3000/api/class-schedule")
         .then((res) => res.json())
         .then((data) => {
           const list = document.getElementById("available-classes-list");
           list.innerHTML = "";
-  
+
           data.forEach((cls) => {
             const li = document.createElement("li");
             li.innerHTML = `
@@ -119,20 +126,19 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         });
     }
-  
-    // === Dashboard Summaries ===
+
     function loadClassSummary(id) {
       fetch(`http://localhost:3000/api/class-registrations/${id}`)
         .then((res) => res.json())
         .then((data) => {
           const list = document.getElementById("summary-classes");
           list.innerHTML = "";
-  
+
           if (!Array.isArray(data) || data.length === 0) {
             list.innerHTML = "<li>No upcoming classes.</li>";
             return;
           }
-  
+
           data.slice(0, 5).forEach((cls) => {
             const li = document.createElement("li");
             li.textContent = `Class ID: ${cls.schedule_id} @ ${cls.registration_date}`;
@@ -143,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
           document.getElementById("summary-classes").innerHTML = "<li>Error loading classes</li>";
         });
     }
-  
+
     function loadMembershipSummary(id) {
       fetch(`http://localhost:3000/api/members/${id}/subscription`)
         .then((res) => res.json())
@@ -154,8 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
           document.getElementById("summary-end-date").textContent = "Error";
         });
     }
-  
-    // === Class Actions ===
+
     window.attendClass = function (scheduleId) {
       fetch("http://localhost:3000/api/class-register", {
         method: "POST",
@@ -168,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
           loadClasses(userId);
         });
     };
-  
+
     window.cancelClass = function (scheduleId) {
       fetch("http://localhost:3000/api/class-register/cancel", {
         method: "POST",
@@ -181,10 +186,10 @@ document.addEventListener("DOMContentLoaded", () => {
           loadClasses(userId);
         });
     };
-  
-    // Load default tab: Dashboard
+
+    // Initial default tab
     sections.dashboard.style.display = "block";
     loadMembershipSummary(userId);
     loadClassSummary(userId);
-  });
-  
+  }
+});

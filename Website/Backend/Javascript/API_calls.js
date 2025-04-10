@@ -174,7 +174,6 @@ router.get('/class-schedule', (req, res) => {
         res.json(rows);
       });
 });
-
 // ====== TRAINERS API ======
 
 // Assign a trainer to a class
@@ -273,11 +272,13 @@ router.get('/database/:table', (req, res) => {
 
 
 
-const bcrypt = require('bcrypt'); // Hashing for password security
-
 // ====== LOGIN ======
 router.post('/login', (req, res) => {
-    const { email, password } = req.body;
+    if (!req.body || !req.body.email || !req.body.password) {
+        return res.status(400).json({ error: "Email and password required" });
+      }
+      const { email, password } = req.body;
+      
 
     const roles = [
         { table: "admins", role: "admin", idField: "id", nameField: "first_name" },
@@ -299,15 +300,40 @@ router.post('/login', (req, res) => {
                 return tryNext(index + 1); // Try next role
             }
 
+            req.session.user = {
+                id: user[idField],
+                name: user[nameField],
+                role: role
+            };
+            
             return res.json({
                 message: "Login successful",
                 userId: user[idField],
                 name: user[nameField],
                 role: role
             });
+            
         });
     };
 
     tryNext(0);
 });
 
+
+router.post('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.clearCookie('connect.sid');
+        res.json({ message: 'Logged out' });
+    });
+});
+
+
+// ====== SESSION MANAGEMENT ======
+router.get('/session', (req, res) => {
+    if (!req.session.user) {
+        console.log("Session error: User not logged in");
+        return res.status(401).json({ error: "Not logged in" });
+    }
+
+    res.json({ user: req.session.user });
+});

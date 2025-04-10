@@ -1,9 +1,9 @@
 const videoElement = document.getElementById("bgVideo");
 
 const videoSources = [
-  "../../media/143431-782373969_small.mp4",
-  "../../media/148208-793717949_small.mp4",
-  "../../media/200657-913478674_small.mp4"  // <- include "../media/"
+  "../../media/Background_vid_1.mp4",
+  "../../media/Background_vid_2.mp4",
+  "../../media/Background_vid_1.mp4"  // <- include "../media/"
 ];
 
 function shuffle(array) {

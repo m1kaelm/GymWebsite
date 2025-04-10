@@ -134,7 +134,7 @@ header {
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
@@ -178,19 +178,26 @@ header {
   display: flex;
   justify-content: space-around;
   padding: 50px;
-  background: white;
+  background: rgba(0, 0, 0, 0.822);
+  color: white;
   text-align: center;
 }
 
+
 .feature {
   width: 30%;
+  color: white
 }
 
+
+.feature p{
+  color: white
+}
 /* Footer */
 footer {
   text-align: center;
   padding: 15px;
-  background: #222;
+  background: #000000;
   color: white;
   position: bottom;
   bottom: 0;
@@ -684,7 +691,7 @@ input[type="checkbox"] {
 .btn-update {
   padding: 0.6rem 1.2rem;
   border: none;
-  background-color: #007bff;
+  background-color: #616161;
   color: white;
   border-radius: 5px;
   cursor: pointer;

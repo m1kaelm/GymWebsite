@@ -10,6 +10,112 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <!-- Add FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+    <style>
+      .modal {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+      }
+      .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border-radius: 5px;
+        width: 80%;
+        max-width: 500px;
+      }
+      .clock-status {
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+      }
+      .clock-status p {
+        margin: 5px 0;
+      }
+      .clock-buttons {
+        display: flex;
+        gap: 10px;
+        margin: 15px 0;
+      }
+      .clock-buttons button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      #clock-in-btn {
+        background-color: #4CAF50;
+        color: white;
+      }
+      #clock-in-btn:hover {
+        background-color: #45a049;
+      }
+      #clock-out-btn {
+        background-color: #f44336;
+        color: white;
+      }
+      #clock-out-btn:hover {
+        background-color: #da190b;
+      }
+      .clock-history {
+        margin-top: 20px;
+      }
+      .clock-history table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .clock-history th, .clock-history td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .clock-history th {
+        background-color: #f8f9fa;
+      }
+      .assigned-classes {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+      }
+      .assigned-classes h4 {
+        margin: 0 0 10px 0;
+        color: #333;
+      }
+      .assigned-classes table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .assigned-classes th,
+      .assigned-classes td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .assigned-classes th {
+        background-color: #f1f1f1;
+        font-weight: bold;
+      }
+      .assigned-classes tr:hover {
+        background-color: #f5f5f5;
+      }
+      .assigned-classes td[colspan="3"] {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+      }
+    </style>
   </head>
   <body class="bg-cover-center bg-overlay">
     <!-- Navigation -->
@@ -18,9 +124,7 @@
 
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="schedule.html">Schedule</a>
-        <a href="members.html">Members</a>
-        <a href="trainer_dashboard.html" class="active">Dashboard</a>
+        <a href="trainer_dashboard.html" class="active">Trainer Dashboard</a>
       </div>
 
       <div class="navigation-btns">
@@ -30,34 +134,81 @@
 
     <!-- Trainer Dashboard Content -->
     <div class="dashboard-container">
-      <h1>Welcome, Coach Lisa!</h1>
+      <h1>Welcome, Trainer <span id="trainer-name">Loading...</span>!</h1>
 
       <div class="dashboard-grid">
-        <div class="dashboard-card">
-          <h2>Today's Classes</h2>
-          <ul>
-            <li>Strength Training - 9:00 AM</li>
-            <li>Boxing - 11:00 AM</li>
-            <li>CrossFit - 4:00 PM</li>
-          </ul>
+        <!-- Schedule Section -->
+        <div class="dashboard-section">
+          <h2>My Schedule</h2>
+          <div class="schedule-grid">
+            <!-- Today's Classes Card -->
+            <div class="dashboard-card">
+              <h3>Today's Classes</h3>
+              <div id="today-classes">
+                <ul id="classes-list">
+                  <!-- Classes will be loaded dynamically -->
+                </ul>
+              </div>
+            </div>
+
+            <!-- Schedule Status Card -->
+            <div class="dashboard-card">
+              <h3>Today's Schedule</h3>
+              <div class="schedule-status">
+                <p>Assigned Hours: <span id="assigned-hours">0</span></p>
+              </div>
+              <div class="assigned-classes">
+                <h4>Today's Classes</h4>
+                <table id="assigned-classes-table">
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Class</th>
+                      <th>Room</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Assigned classes will be loaded dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calendar Card -->
+          <div class="dashboard-card calendar-card">
+            <h3>Monthly Schedule</h3>
+            <div id="trainer-calendar"></div>
+          </div>
         </div>
 
-        <div class="dashboard-card">
-          <h2>Assigned Members</h2>
-          <ul>
-            <li>John Doe</li>
-            <li>Sarah Connor</li>
-            <li>Mike Ross</li>
-          </ul>
-        </div>
-
-        <div class="dashboard-card">
-          <h2>Trainer Notes</h2>
-          <p>Don't forget to submit class reports by 6 PM.</p>
-          <button class="btn-update">Submit Report</button>
+        <!-- Members Section -->
+        <div class="dashboard-section">
+          <h2>My Members</h2>
+          <div class="dashboard-card">
+            <div id="assigned-members">
+              <ul id="members-list">
+                <!-- Members will be loaded dynamically -->
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Shift Details Modal -->
+    <div id="shift-details-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close" id="close-shift-modal">&times;</span>
+        <h3>Shift Details</h3>
+        <div id="shift-details-body">
+          <!-- Shift details will be loaded dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Add FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script src="../Javascript/trainer_dashboard.js"></script>
     <script src="../Javascript/logout.js"></script>
 

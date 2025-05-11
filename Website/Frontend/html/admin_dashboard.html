@@ -45,8 +45,14 @@
         </div>
 
         <div class="dashboard-card">
+          <h2>Manage Classes</h2>
+          <p>Create, update, or remove class offerings and schedules.</p>
+          <a href="#" class="btn-update" data-target="manage-classes">Manage Classes</a>
+        </div>
+
+        <div class="dashboard-card">
           <h2>Manage Trainers</h2>
-          <p>Assign classes, update specializations, and track hours.</p>
+          <p>Add, edit, or remove gym trainers and their specializations.</p>
           <a href="#" class="btn-update" data-target="manage-trainers">Manage Trainers</a>
         </div>
 
@@ -54,12 +60,6 @@
           <h2>Manage Memberships</h2>
           <p>Adjust pricing, duration, and features of gym plans.</p>
           <a href="#" class="btn-update" data-target="manage-memberships">Manage Plans</a>
-        </div>
-
-        <div class="dashboard-card">
-          <h2>Manage Classes</h2>
-          <p>Create, update, or remove class offerings and schedules.</p>
-          <a href="#" class="btn-update" data-target="manage-classes">Manage Classes</a>
         </div>
       </div>
 
@@ -69,8 +69,8 @@
         <button class="admin-tab" data-target="manage-members">Members</button>
         <button class="admin-tab" data-target="manage-staff">Staff</button>
         <button class="admin-tab" data-target="manage-trainers">Trainers</button>
-        <button class="admin-tab" data-target="manage-memberships">Memberships</button>
         <button class="admin-tab" data-target="manage-classes">Classes</button>
+        <button class="admin-tab" data-target="manage-memberships">Memberships</button>
       </div>
 
       <!-- Admin Sections -->
@@ -83,11 +83,10 @@
             <option value="members">Members</option>
             <option value="membership_plans">Membership Plans</option>
             <option value="member_subscriptions">Member Subscriptions</option>
-            <option value="trainers">Trainers</option>
-            <option value="classes">Classes</option>
+            <option value="class_types">Class Types</option>
             <option value="class_schedule">Class Schedule</option>
             <option value="class_registrations">Class Registrations</option>
-            <option value="trainer_hours">Trainer Hours</option>
+            <option value="staff">Staff</option>
           </select>
           <button id="load-table-btn" class="button">Load Table</button>
         </div>
@@ -115,39 +114,131 @@
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Action</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody></tbody>
         </table>
 
-         <!-- Add New Member Form (Add inside manage-members section) -->
-        <div id="add-member-form" class="form-container">
+        <div class="form-container">
           <h3>Add New Member</h3>
-          <input type="text" id="new-member-firstname" placeholder="First Name" required minlength="1">
-          <input type="text" id="new-member-lastname" placeholder="Last Name" required minlength="1">
-          <input type="email" id="new-member-email" placeholder="Email" required minlength="1">
-          <input type="tel" id="new-member-phone" placeholder="Phone" required minlength="1">
-          <input type="password" id="new-member-password" placeholder="Password" required minlength="1">
-          <button id="add-member-btn">Add Member</button>
-        </div>      </div>
-
-     
-
+          <form id="add-member-form">
+            <input type="text" id="new-member-firstname" placeholder="First Name" required>
+            <input type="text" id="new-member-lastname" placeholder="Last Name" required>
+            <input type="email" id="new-member-email" placeholder="Email" required>
+            <input type="tel" id="new-member-phone" placeholder="Phone" required>
+            <input type="password" id="new-member-password" placeholder="Password" required>
+            <button type="submit" id="add-member-btn">Add Member</button>
+          </form>
+        </div>
+      </div>
 
       <div id="manage-staff" class="admin-section" style="display: none;">
         <h2>Manage Staff</h2>
         <p>Tools to view and update staff users and permissions.</p>
       
         <div id="staff-output">
-          <!-- Staff table will be dynamically inserted here by admin.js -->
+          <table id="staff-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="form-container">
+          <h3>Add New Staff</h3>
+          <form id="add-staff-form">
+            <input type="text" id="new-staff-firstname" placeholder="First Name" required>
+            <input type="text" id="new-staff-lastname" placeholder="Last Name" required>
+            <input type="email" id="new-staff-email" placeholder="Email" required>
+            <input type="tel" id="new-staff-phone" placeholder="Phone" required>
+            <input type="text" id="new-staff-position" placeholder="Position" required>
+            <input type="password" id="new-staff-password" placeholder="Password" required>
+            <button type="submit" id="add-staff-btn">Add Staff</button>
+          </form>
         </div>
       </div>
-      
+
+      <div id="manage-classes" class="admin-section" style="display: none;">
+        <h2>Manage Classes</h2>
+        <p>Create, schedule, or remove class types and sessions.</p>
+
+        <!-- Class Types Management -->
+        <div class="class-types-section">
+          <h3>Class Types</h3>
+          <form id="add-class-type-form" class="form-container">
+            <h4>Add New Class Type</h4>
+            <input type="text" id="new-class-name" placeholder="Class Name" required>
+            <input type="text" id="new-class-description" placeholder="Class Description" required>
+            <button type="submit">Add Class Type</button>
+          </form>
+
+          <table id="class-types-table" class="member-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- Class Schedule Management -->
+        <div class="class-schedule-section">
+          <h3>Class Schedule</h3>
+          <form id="add-schedule-form" class="form-container">
+            <h4>Add New Schedule</h4>
+            <label for="class-type-select">Class Type:</label>
+            <select id="class-type-select" required></select>
+            
+            <label for="trainer-select">Trainer:</label>
+            <select id="trainer-select" required></select>
+            
+            <label for="start-time">Start Time:</label>
+            <input type="datetime-local" id="start-time" required />
+            
+            <label for="end-time">End Time:</label>
+            <input type="datetime-local" id="end-time" required />
+            
+            <label for="room-number">Room Number:</label>
+            <input type="text" id="room-number" required />
+            
+            <button type="submit">Add Schedule</button>
+          </form>
+
+          <table id="schedule-table" class="member-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Class Type</th>
+                <th>Trainer</th>
+                <th>Room</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
 
       <div id="manage-trainers" class="admin-section" style="display: none;">
         <h2>Manage Trainers</h2>
-        <p>Assign classes, update specializations, and track hours.</p>
+        <p>Add, edit, or remove gym trainers and their specializations.</p>
       
         <div id="trainers-output">
           <table id="trainers-table">
@@ -156,88 +247,69 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Specialisation</th>
+                <th>Phone</th>
+                <th>Specialization</th>
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <!-- Trainer rows dynamically added by JS -->
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
+
+        <div id="add-trainer-form" class="form-container">
+          <h3>Add New Trainer</h3>
+          <form id="trainer-form">
+            <input type="text" id="new-trainer-firstname" placeholder="First Name" required>
+            <input type="text" id="new-trainer-lastname" placeholder="Last Name" required>
+            <input type="email" id="new-trainer-email" placeholder="Email" required>
+            <input type="tel" id="new-trainer-phone" placeholder="Phone" required>
+            <input type="text" id="new-trainer-specialisation" placeholder="Specialization" required>
+            <input type="password" id="new-trainer-password" placeholder="Password" required>
+            <button type="submit" id="add-trainer-btn">Add Trainer</button>
+          </form>
+        </div>
       </div>
-      
 
       <div id="manage-memberships" class="admin-section" style="display: none;">
         <h2>Manage Memberships</h2>
         <p>Adjust plan features, pricing, and duration.</p>
-        <div id="memberships-output"></div>
-      </div>
-
-      <div id="manage-classes" class="admin-section" style="display: none;">
-        <h2>Manage Classes</h2>
-        <p>Create, schedule, or remove class types and sessions.</p>
-      
-
-        <!-- Add New Class Form (Add inside manage-classes section) -->
-        <!-- Add New Class Form -->
-        <div id="add-class-form" class="form-container">
-          <h3>Add New Class</h3>
-          <input type="text" id="new-class-name" placeholder="Class Name" required />
-          <input type="text" id="new-class-description" placeholder="Class Description" required />
-          <input type="number" id="new-class-capacity" placeholder="Class Capacity" required />
-          <input type="number" id="new-class-duration" placeholder="Class Duration (mins)" required />
-          <button id="add-class-btn">Add Class</button>
-        </div>
-
-
-        <td>
-          <button onclick="deleteClass(${cls.id})">Delete</button>
-        </td>
         
-
-        <div id="classes-output">
-          <table id="classes-table">
+        <div id="memberships-output">
+          <table id="memberships-table">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Capacity</th>
-                <th>Duration</th>
-                <th>Trainer</th>
+                <th>Description</th>
+                <th>Duration (months)</th>
+                <th>Price</th>
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
-            
-            <tbody>
-              <!-- Class rows dynamically added by JS -->
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
-      </div>
 
-      <!-- Schedule Class Form (appears when clicking 'Schedule' button) -->
-      <div id="schedule-class-form" class="form-container" style="display: none;">
-        <h3>Schedule Class</h3>
-        <label for="trainer-id">Trainer ID:</label>
-        <input type="text" id="trainer-id" required />
-        <label for="start-time">Start Time:</label>
-        <input type="datetime-local" id="start-time" required />
-        <label for="end-time">End Time:</label>
-        <input type="datetime-local" id="end-time" required />
-        <label for="room-number">Room Number:</label>
-        <input type="text" id="room-number" required />
-        <button id="schedule-class-btn">Schedule Class</button>
+        <div class="form-container">
+          <h3>Add New Membership Plan</h3>
+          <form id="add-membership-form">
+            <input type="text" id="new-plan-name" placeholder="Plan Name" required>
+            <input type="text" id="new-plan-description" placeholder="Description" required>
+            <input type="number" id="new-plan-duration" placeholder="Duration (months)" required min="1">
+            <input type="number" id="new-plan-price" placeholder="Price" required min="0" step="0.01">
+            <button type="submit" id="add-plan-btn">Add Plan</button>
+          </form>
+        </div>
       </div>
-
-      
     </div>
 
     <script>
-        const role = localStorage.getItem("role");
-        if (role !== "admin") {
-            window.location.href = "login.html";
-        }
+      const role = localStorage.getItem("role");
+      if (role !== "admin") {
+        window.location.href = "login.html";
+      }
     </script>
     <script src="../Javascript/admin.js"></script>
     <script src="../Javascript/logout.js"></script>

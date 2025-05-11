@@ -6,6 +6,76 @@
   <title>Flex Gym - Member Dashboard</title>
   <link rel="stylesheet" href="../Css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    .class-info {
+      margin-bottom: 10px;
+    }
+    .class-info strong {
+      font-size: 1.1em;
+      color: #333;
+    }
+    .class-info p {
+      margin: 5px 0;
+      color: #666;
+    }
+    #registered-classes-list li,
+    #available-classes-list li {
+      padding: 15px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #registered-classes-list button,
+    #available-classes-list button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+    }
+    #registered-classes-list button:hover,
+    #available-classes-list button:hover {
+      background-color: #0056b3;
+    }
+    #registered-classes-list button:disabled,
+    #available-classes-list button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Membership Status Styles */
+    .status-active {
+      color: #28a745;
+      font-weight: bold;
+    }
+    .status-cancelled {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    .status-pending {
+      color: #ffc107;
+      font-weight: bold;
+    }
+
+    /* Membership Info Styles */
+    .membership-info {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .membership-info p {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+    .membership-info strong {
+      color: #495057;
+    }
+  </style>
 </head>
 <body class="bg-cover-center bg-overlay">
   <!-- Navigation -->
@@ -67,6 +137,9 @@
         <label>Password:
           <input type="password" id="password" placeholder="Leave blank to keep current" />
         </label>
+        <label>Confirm Password:
+          <input type="password" id="confirmPassword" placeholder="Confirm new password" />
+        </label>
         <button type="submit">Update Profile</button>
       </form>
     </div>
@@ -74,11 +147,29 @@
     <!-- Section: Membership -->
     <div class="dashboard-section" id="membership-section" style="display: none;">
       <h2>My Membership Details</h2>
-      <p><strong>Plan:</strong> <span id="plan-name">...</span></p>
-      <p><strong>Start:</strong> <span id="plan-start-date">...</span></p>
-      <p><strong>End:</strong> <span id="plan-end-date">...</span></p>
-      <button id="renew-membership-btn">Renew Membership</button>
-      <button id="cancel-membership-btn">Cancel Membership</button>
+      <div class="membership-details">
+        <div class="membership-info">
+          <p><strong>Current Plan:</strong> <span id="plan-name">...</span></p>
+          <p><strong>Start Date:</strong> <span id="plan-start-date">...</span></p>
+          <p><strong>Renewal Date:</strong> <span id="plan-end-date">...</span></p>
+          <p><strong>Status:</strong> <span id="membership-status">...</span></p>
+          <button id="confirm-payment-btn" class="action-btn" style="display:none;">Confirm Payment</button>
+        </div>
+        <div class="membership-actions">
+          <button id="renew-membership-btn" class="action-btn">Renew Membership</button>
+          <button id="upgrade-membership-btn" class="action-btn">Upgrade Plan</button>
+          <button id="cancel-membership-btn" class="action-btn danger">Cancel Membership</button>
+        </div>
+      </div>
+      
+      <!-- Upgrade Plan Modal -->
+      <div id="upgrade-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+          <h3>Upgrade Your Membership</h3>
+          <div id="available-plans"></div>
+          <button id="close-modal">Close</button>
+        </div>
+      </div>
     </div>
 
     <!-- Section: My Classes -->

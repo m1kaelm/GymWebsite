@@ -910,3 +910,67 @@ input[type="checkbox"] {
 #classes-output button:hover {
   background-color: #d04028;
 }
+
+/* ===== Modal for Shift Details (Trainer Dashboard) ===== */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 8% auto;
+  padding: 24px 32px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  color: #222;
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #222;
+}
+
+#shift-details-body {
+  font-size: 1rem;
+  color: #222;
+  line-height: 1.5;
+}
+
+.modal .close {
+  color: #aaa;
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal .close:hover,
+.modal .close:focus {
+  color: #f04e30;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 16px 8px;
+    width: 98%;
+    max-width: 98vw;
+  }
+}

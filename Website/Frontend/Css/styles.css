@@ -1014,11 +1014,3 @@ input[type="checkbox"] {
     margin-bottom: 10px;
   }
 }
-/* === Make the login form (wrapper) responsive === */
-@media only screen and (max-width: 600px) {
-  .wrapper {
-    width: 90%;
-    padding: 1rem;
-    margin: 30px auto 0;
-  }
-}

@@ -4,17 +4,92 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Beginner Exercise Guide</title>
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Assuming your style file is styles.css -->
+    <link rel="stylesheet" href="../Css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Override page background just for this page */
+      body {
+        background: #f4f4f4; /* Light plain background */
+      }
+
+      /* Additional minimal page-specific tweaks */
+      .exercise-section {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 20px;
+      }
+
+      .exercise-card {
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+
+      .media-gallery {
+        margin: 2rem auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      .media-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .media-grid img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      /* Responsive tweaks */
+      @media (max-width: 768px) {
+        .exercise-card {
+          padding: 15px;
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <header class="page-header">
-      <h1>Exercise Guide for Beginners</h1>
+    <!-- Navigation -->
+    <nav class="navigation">
+      <a href="index.html" class="logo" aria-label="Gym Home"></a>
+
+      <!-- Hamburger menu -->
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="classes.html">Classes</a>
+        <a href="membershipInfo.html">Membership</a>
+        <a href="about.html">About</a>
+      </div>
+
+      <div class="navigation-btns">
+        <a href="register.html"> <i class="fas fa-user-plus"></i> Sign Up </a>
+        <a href="login.html"> <i class="fas fa-sign-in-alt"></i> Login </a>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="index_hero">
+      <h2>Exercise Guide for Beginners</h2>
       <p>
         Start your fitness journey with these simple yet effective exercises.
       </p>
     </header>
 
+    <!-- Exercise Section -->
     <main class="exercise-section">
       <div class="exercise-card">
         <h2>1. Bodyweight Squat</h2>
@@ -49,6 +124,7 @@
       </div>
     </main>
 
+    <!-- Media Gallery -->
     <section class="media-gallery">
       <h2>Exercise Demonstrations</h2>
       <div class="media-grid">
@@ -57,12 +133,23 @@
         <img src="images/plank.jpg" alt="Plank Hold Demo" />
         <img src="images/glute-bridge.jpg" alt="Glute Bridge Demo" />
       </div>
-      <!-- Optional: Embed video tutorials -->
-      <!-- <video src="videos/beginner-exercises.mp4" controls></video> -->
     </section>
 
-    <footer class="page-footer">
+    <!-- Footer -->
+    <footer>
       <p>© 2025 Your Fitness Brand | PureGym Inspired</p>
     </footer>
+
+    <!-- Hamburger Menu Script -->
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
+      const navigationBtns = document.querySelector(".navigation-btns");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        navigationBtns.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>

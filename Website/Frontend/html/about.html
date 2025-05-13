@@ -1,60 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About - Flex Gym</title>
-    <link rel="stylesheet" href="../Css/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-  </head>
-  <body class="bg-cover-center">
-    <nav class="navigation">
-      <a href="index.html" class="logo"></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Flex Gym</title>
+  <link rel="stylesheet" href="../Css/styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+    .slideshow-container {
+      max-width: 1100px;
+      position: relative;
+      margin: auto;
+      overflow: hidden;
+    }
 
-      <!-- Main Navigation Links -->
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="classes.html">Classes</a>
-        <a href="membershipInfo.html">Membership</a>
-        <a href="about.html">About</a>
+    .mySlides {
+      display: none;
+    }
+
+    .fade {
+      animation: fade 1.5s ease-in-out;
+    }
+
+    @keyframes fade {
+      from { opacity: .4; }
+      to { opacity: 1; }
+    }
+
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #717171;
+    }
+  </style>
+</head>
+
+<body class="bg-cover-center">
+  <navigation class="navigation">
+    <a href="index.html" class="logo"></a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="classes.html">Classes</a>
+      <a href="membershipInfo.html">Membership</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <div class="navigation-btns">
+      <a href="register.html" title="Register">
+        <i class="fas fa-user-plus"></i> Sign Up
+      </a>
+      <a href="login.html" title="Login">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </a>
+    </div>
+  </navigation>
+
+  <section class="content">
+    <div class="about-intro">
+      <h1>Welcome to Flex GYM – where strength meets community</h1>
+      <h2>
+        At Flex GYM, we believe fitness is more than just a workout – it’s a lifestyle.
+        Whether you're a seasoned athlete or just starting your journey, our gym is built
+        to support your goals in a motivating and inclusive environment.
+      </h2>
+    </div>
+
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img src="/Website/media/gymp1.jpg" style="width:100%">
       </div>
-
-      <!-- Auth Buttons (Sign Up & Login) -->
-      <div class="navigation-btns">
-        <a href="register.html" title="Register">
-          <i class="fas fa-user-plus"></i> Sign Up
-        </a>
-        <a href="login.html" title="Login">
-          <i class="fas fa-sign-in-alt"></i> Login
-        </a>
+      <div class="mySlides fade">
+        <img src="/Website/media/gymp2.jpg" style="width:100%">
       </div>
-      <div class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
+      <div class="mySlides fade">
+        <img src="/Website/media/gymp3.jpg" style="width:100%">
       </div>
-    </nav>
+    </div>
 
-    <section class="content">
-      <h1>About Flex Gym</h1>
-      <h2>Who We Are</h2>
-      <p>
-        Flex Gym is dedicated to providing the best fitness experience with
-        top-class trainers and modern equipment.
-      </p>
-    </section>
+    <br>
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+  </section>
 
-    <footer>
-      <p>© 2025 Flex Gym. All rights reserved.</p>
-    </footer>
-    <script>
-      const hamburger = document.getElementById("hamburger");
-      const navLinks = document.querySelector(".nav-links");
+  <footer>
+    <p>© 2025 Flex Gym. All rights reserved.</p>
+  </footer>
 
-      hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
-    </script>
-  </body>
+  <script>
+    let slideIndex = 0;
+    let manualChange = false;
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+
+      for (i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+      }
+
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].classList.add("active");
+
+      if (!manualChange) {
+        setTimeout(showSlides, 3000); // Auto-slide every 3 seconds
+      }
+    }
+
+    function currentSlide(n) {
+      slideIndex = n;
+      manualChange = true;
+      showSlides();
+      setTimeout(() => { manualChange = false; showSlides(); }, 6000);
+    }
+
+    // Start slideshow
+    document.addEventListener("DOMContentLoaded", () => {
+      showSlides();
+    });
+  </script>
+</body>
 </html>

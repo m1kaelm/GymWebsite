@@ -6,10 +6,7 @@
     <title>Flex Gym - Admin Dashboard</title>
     <link rel="stylesheet" href="../Css/styles.css" />
     <link rel="stylesheet" href="../Css/admin_dashboard.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   </head>
   <body class="bg-cover-center bg-overlay">
     <!-- Navigation -->
@@ -22,9 +19,6 @@
       <div class="navigation-btns">
         <a href="#" class="btn-signout">Sign Out</a>
       </div>
-      <div class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
-      </div>
     </nav>
 
     <!-- Admin Dashboard Content -->
@@ -35,68 +29,52 @@
         <div class="dashboard-card">
           <h2>Database Explorer</h2>
           <p>View and manage data directly from gym database tables.</p>
-          <a href="#" class="btn-update" data-target="db-explorer"
-            >Open Explorer</a
-          >
+          <a href="#" class="btn-update" data-target="db-explorer">Open Explorer</a>
         </div>
 
         <div class="dashboard-card">
           <h2>Manage Members</h2>
           <p>Edit member info, view subscriptions, and handle access.</p>
-          <a href="#" class="btn-update" data-target="manage-members"
-            >Manage Members</a
-          >
+          <a href="#" class="btn-update" data-target="manage-members">Manage Members</a>
         </div>
 
         <div class="dashboard-card">
           <h2>Manage Staff</h2>
           <p>View, edit, or remove gym staff roles and permissions.</p>
-          <a href="#" class="btn-update" data-target="manage-staff"
-            >Manage Staff</a
-          >
+          <a href="#" class="btn-update" data-target="manage-staff">Manage Staff</a>
         </div>
 
         <div class="dashboard-card">
           <h2>Manage Classes</h2>
           <p>Create, update, or remove class offerings and schedules.</p>
-          <a href="#" class="btn-update" data-target="manage-classes"
-            >Manage Classes</a
-          >
+          <a href="#" class="btn-update" data-target="manage-classes">Manage Classes</a>
         </div>
 
         <div class="dashboard-card">
           <h2>Manage Trainers</h2>
           <p>Add, edit, or remove gym trainers and their specializations.</p>
-          <a href="#" class="btn-update" data-target="manage-trainers"
-            >Manage Trainers</a
-          >
+          <a href="#" class="btn-update" data-target="manage-trainers">Manage Trainers</a>
         </div>
 
         <div class="dashboard-card">
           <h2>Manage Memberships</h2>
           <p>Adjust pricing, duration, and features of gym plans.</p>
-          <a href="#" class="btn-update" data-target="manage-memberships"
-            >Manage Plans</a
-          >
+          <a href="#" class="btn-update" data-target="manage-memberships">Manage Plans</a>
         </div>
       </div>
 
       <!-- Tab Navigation After Card Click -->
-      <div class="admin-tabs" style="display: none">
+      <div class="admin-tabs" style="display: none;">
         <button class="admin-tab" data-target="db-explorer">Database</button>
         <button class="admin-tab" data-target="manage-members">Members</button>
         <button class="admin-tab" data-target="manage-staff">Staff</button>
-        <button class="admin-tab" data-target="manage-trainers">
-          Trainers
-        </button>
+        <button class="admin-tab" data-target="manage-trainers">Trainers</button>
         <button class="admin-tab" data-target="manage-classes">Classes</button>
-        <button class="admin-tab" data-target="manage-memberships">
-          Memberships
-        </button>
+        <button class="admin-tab" data-target="manage-memberships">Memberships</button>
       </div>
 
       <!-- Admin Sections -->
-      <div id="db-explorer" class="admin-section" style="display: none">
+      <div id="db-explorer" class="admin-section" style="display: none;">
         <h2>Database Explorer</h2>
         <div class="table-explorer">
           <label for="table-select">Choose a table:</label>
@@ -115,7 +93,7 @@
         <div id="table-output"></div>
       </div>
 
-      <div id="manage-members" class="admin-section" style="display: none">
+      <div id="manage-members" class="admin-section" style="display: none;">
         <h2>Manage Members</h2>
         <p>Tools to search, edit, and manage gym members.</p>
 
@@ -125,11 +103,7 @@
             <option value="email">Email</option>
             <option value="phone">Phone</option>
           </select>
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Search members..."
-          />
+          <input type="text" id="search-input" placeholder="Search members...">
           <button id="search-button">Go</button>
         </div>
 
@@ -150,45 +124,20 @@
         <div class="form-container">
           <h3>Add New Member</h3>
           <form id="add-member-form">
-            <input
-              type="text"
-              id="new-member-firstname"
-              placeholder="First Name"
-              required
-            />
-            <input
-              type="text"
-              id="new-member-lastname"
-              placeholder="Last Name"
-              required
-            />
-            <input
-              type="email"
-              id="new-member-email"
-              placeholder="Email"
-              required
-            />
-            <input
-              type="tel"
-              id="new-member-phone"
-              placeholder="Phone"
-              required
-            />
-            <input
-              type="password"
-              id="new-member-password"
-              placeholder="Password"
-              required
-            />
+            <input type="text" id="new-member-firstname" placeholder="First Name" required>
+            <input type="text" id="new-member-lastname" placeholder="Last Name" required>
+            <input type="email" id="new-member-email" placeholder="Email" required>
+            <input type="tel" id="new-member-phone" placeholder="Phone" required>
+            <input type="password" id="new-member-password" placeholder="Password" required>
             <button type="submit" id="add-member-btn">Add Member</button>
           </form>
         </div>
       </div>
 
-      <div id="manage-staff" class="admin-section" style="display: none">
+      <div id="manage-staff" class="admin-section" style="display: none;">
         <h2>Manage Staff</h2>
         <p>Tools to view and update staff users and permissions.</p>
-
+      
         <div id="staff-output">
           <table id="staff-table">
             <thead>
@@ -209,48 +158,18 @@
         <div class="form-container">
           <h3>Add New Staff</h3>
           <form id="add-staff-form">
-            <input
-              type="text"
-              id="new-staff-firstname"
-              placeholder="First Name"
-              required
-            />
-            <input
-              type="text"
-              id="new-staff-lastname"
-              placeholder="Last Name"
-              required
-            />
-            <input
-              type="email"
-              id="new-staff-email"
-              placeholder="Email"
-              required
-            />
-            <input
-              type="tel"
-              id="new-staff-phone"
-              placeholder="Phone"
-              required
-            />
-            <input
-              type="text"
-              id="new-staff-position"
-              placeholder="Position"
-              required
-            />
-            <input
-              type="password"
-              id="new-staff-password"
-              placeholder="Password"
-              required
-            />
+            <input type="text" id="new-staff-firstname" placeholder="First Name" required>
+            <input type="text" id="new-staff-lastname" placeholder="Last Name" required>
+            <input type="email" id="new-staff-email" placeholder="Email" required>
+            <input type="tel" id="new-staff-phone" placeholder="Phone" required>
+            <input type="text" id="new-staff-position" placeholder="Position" required>
+            <input type="password" id="new-staff-password" placeholder="Password" required>
             <button type="submit" id="add-staff-btn">Add Staff</button>
           </form>
         </div>
       </div>
 
-      <div id="manage-classes" class="admin-section" style="display: none">
+      <div id="manage-classes" class="admin-section" style="display: none;">
         <h2>Manage Classes</h2>
         <p>Create, schedule, or remove class types and sessions.</p>
 
@@ -259,18 +178,8 @@
           <h3>Class Types</h3>
           <form id="add-class-type-form" class="form-container">
             <h4>Add New Class Type</h4>
-            <input
-              type="text"
-              id="new-class-name"
-              placeholder="Class Name"
-              required
-            />
-            <input
-              type="text"
-              id="new-class-description"
-              placeholder="Class Description"
-              required
-            />
+            <input type="text" id="new-class-name" placeholder="Class Name" required>
+            <input type="text" id="new-class-description" placeholder="Class Description" required>
             <button type="submit">Add Class Type</button>
           </form>
 
@@ -294,19 +203,19 @@
             <h4>Add New Schedule</h4>
             <label for="class-type-select">Class Type:</label>
             <select id="class-type-select" required></select>
-
+            
             <label for="trainer-select">Trainer:</label>
             <select id="trainer-select" required></select>
-
+            
             <label for="start-time">Start Time:</label>
             <input type="datetime-local" id="start-time" required />
-
+            
             <label for="end-time">End Time:</label>
             <input type="datetime-local" id="end-time" required />
-
+            
             <label for="room-number">Room Number:</label>
             <input type="text" id="room-number" required />
-
+            
             <button type="submit">Add Schedule</button>
           </form>
 
@@ -327,10 +236,10 @@
         </div>
       </div>
 
-      <div id="manage-trainers" class="admin-section" style="display: none">
+      <div id="manage-trainers" class="admin-section" style="display: none;">
         <h2>Manage Trainers</h2>
         <p>Add, edit, or remove gym trainers and their specializations.</p>
-
+      
         <div id="trainers-output">
           <table id="trainers-table">
             <thead>
@@ -351,51 +260,21 @@
         <div id="add-trainer-form" class="form-container">
           <h3>Add New Trainer</h3>
           <form id="trainer-form">
-            <input
-              type="text"
-              id="new-trainer-firstname"
-              placeholder="First Name"
-              required
-            />
-            <input
-              type="text"
-              id="new-trainer-lastname"
-              placeholder="Last Name"
-              required
-            />
-            <input
-              type="email"
-              id="new-trainer-email"
-              placeholder="Email"
-              required
-            />
-            <input
-              type="tel"
-              id="new-trainer-phone"
-              placeholder="Phone"
-              required
-            />
-            <input
-              type="text"
-              id="new-trainer-specialisation"
-              placeholder="Specialization"
-              required
-            />
-            <input
-              type="password"
-              id="new-trainer-password"
-              placeholder="Password"
-              required
-            />
+            <input type="text" id="new-trainer-firstname" placeholder="First Name" required>
+            <input type="text" id="new-trainer-lastname" placeholder="Last Name" required>
+            <input type="email" id="new-trainer-email" placeholder="Email" required>
+            <input type="tel" id="new-trainer-phone" placeholder="Phone" required>
+            <input type="text" id="new-trainer-specialisation" placeholder="Specialization" required>
+            <input type="password" id="new-trainer-password" placeholder="Password" required>
             <button type="submit" id="add-trainer-btn">Add Trainer</button>
           </form>
         </div>
       </div>
 
-      <div id="manage-memberships" class="admin-section" style="display: none">
+      <div id="manage-memberships" class="admin-section" style="display: none;">
         <h2>Manage Memberships</h2>
         <p>Adjust plan features, pricing, and duration.</p>
-
+        
         <div id="memberships-output">
           <table id="memberships-table">
             <thead>
@@ -416,33 +295,10 @@
         <div class="form-container">
           <h3>Add New Membership Plan</h3>
           <form id="add-membership-form">
-            <input
-              type="text"
-              id="new-plan-name"
-              placeholder="Plan Name"
-              required
-            />
-            <input
-              type="text"
-              id="new-plan-description"
-              placeholder="Description"
-              required
-            />
-            <input
-              type="number"
-              id="new-plan-duration"
-              placeholder="Duration (months)"
-              required
-              min="1"
-            />
-            <input
-              type="number"
-              id="new-plan-price"
-              placeholder="Price"
-              required
-              min="0"
-              step="0.01"
-            />
+            <input type="text" id="new-plan-name" placeholder="Plan Name" required>
+            <input type="text" id="new-plan-description" placeholder="Description" required>
+            <input type="number" id="new-plan-duration" placeholder="Duration (months)" required min="1">
+            <input type="number" id="new-plan-price" placeholder="Price" required min="0" step="0.01">
             <button type="submit" id="add-plan-btn">Add Plan</button>
           </form>
         </div>
@@ -457,13 +313,5 @@
     </script>
     <script src="../Javascript/admin.js"></script>
     <script src="../Javascript/logout.js"></script>
-    <script>
-      const hamburger = document.getElementById("hamburger");
-      const navLinks = document.querySelector(".nav-links");
-
-      hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
-    </script>
   </body>
 </html>

@@ -14,9 +14,11 @@
     <!-- 🔥 Background Video -->
     <video id="bgVideo" autoplay muted playsinline></video>
 
+ 
+      
     <navigation class="navigation">
       <a href="index.html" class="logo"></a>
-
+    
       <!-- Main Navigation Links -->
       <div class="nav-links">
         <a href="index.html">Home</a>
@@ -24,7 +26,7 @@
         <a href="membershipInfo.html">Membership</a>
         <a href="about.html">About</a>
       </div>
-
+    
       <!-- Auth Buttons (Sign Up & Login) -->
       <div class="navigation-btns">
         <a href="register.html" title="Register">
@@ -34,10 +36,10 @@
           <i class="fas fa-sign-in-alt"></i> Login
         </a>
       </div>
-      <div class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
-      </div>
     </navigation>
+    
+    
+    
 
     <section class="index_hero">
       <h2>Train Hard, Stay Fit</h2>
@@ -63,19 +65,52 @@
       </div>
     </section>
 
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <img src="/Website/media/ceo.jpg" alt="Jane" style="width:100%">
+          <div class="container">
+            <h2>Arun Garcia</h2>
+            <p class="title">CEO &amp; Founder</p>
+            <p>Active</p>
+            <p>Ceo@gym.com</p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="column">
+        <div class="card">
+          <img src="/Website/media/bond.jpg" alt="Mike" style="width:100%">
+          <div class="container">
+            <h2>James Bond</h2>
+            <p class="title">Intense Athletics</p>
+            <p>Active</p>
+            <p>J.bond@gym.com</p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="column">
+        <div class="card">
+          <img src="/Website/media/sarah.jpg" alt="John" style="width:100%">
+          <div class="container">
+            <h2>Sarah Johnson</h2>
+            <p class="title">Yoga expert</p>
+            <p>Active</p>
+            <p>Sarah.j@gym.com</p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer>
       <p>&copy; 2025 Flex Gym. All rights reserved.</p>
     </footer>
 
     <!-- ✅ Load Background Video Script -->
     <script src="../Javascript/bg-video.js"></script>
-    <script>
-      const hamburger = document.getElementById("hamburger");
-      const navLinks = document.querySelector(".nav-links");
-
-      hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
-    </script>
   </body>
 </html>

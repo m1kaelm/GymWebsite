@@ -1,251 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flex Gym - Member Dashboard</title>
-    <link rel="stylesheet" href="../Css/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <style>
-      .class-info {
-        margin-bottom: 10px;
-      }
-      .class-info strong {
-        font-size: 1.1em;
-        color: #333;
-      }
-      .class-info p {
-        margin: 5px 0;
-        color: #666;
-      }
-      #registered-classes-list li,
-      #available-classes-list li {
-        padding: 15px;
-        margin-bottom: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      #registered-classes-list button,
-      #available-classes-list button {
-        padding: 8px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        background-color: #007bff;
-        color: white;
-      }
-      #registered-classes-list button:hover,
-      #available-classes-list button:hover {
-        background-color: #0056b3;
-      }
-      #registered-classes-list button:disabled,
-      #available-classes-list button:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flex Gym - Member Dashboard</title>
+  <link rel="stylesheet" href="../Css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    .class-info {
+      margin-bottom: 10px;
+    }
+    .class-info strong {
+      font-size: 1.1em;
+      color: #333;
+    }
+    .class-info p {
+      margin: 5px 0;
+      color: #666;
+    }
+    #registered-classes-list li,
+    #available-classes-list li {
+      padding: 15px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #registered-classes-list button,
+    #available-classes-list button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+    }
+    #registered-classes-list button:hover,
+    #available-classes-list button:hover {
+      background-color: #0056b3;
+    }
+    #registered-classes-list button:disabled,
+    #available-classes-list button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
 
-      /* Membership Status Styles */
-      .status-active {
-        color: #28a745;
-        font-weight: bold;
-      }
-      .status-cancelled {
-        color: #dc3545;
-        font-weight: bold;
-      }
-      .status-pending {
-        color: #ffc107;
-        font-weight: bold;
-      }
+    /* Membership Status Styles */
+    .status-active {
+      color: #28a745;
+      font-weight: bold;
+    }
+    .status-cancelled {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    .status-pending {
+      color: #ffc107;
+      font-weight: bold;
+    }
 
-      /* Membership Info Styles */
-      .membership-info {
-        background-color: #f8f9fa;
-        padding: 20px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-      }
-      .membership-info p {
-        margin: 10px 0;
-        font-size: 1.1em;
-      }
-      .membership-info strong {
-        color: #495057;
-      }
-    </style>
-  </head>
-  <body class="bg-cover-center bg-overlay">
-    <!-- Navigation -->
-    <nav class="navigation" class="logo">
-      >
-      <a href="index.html" class="logo" aria-label="Gym Home"></a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-      </div>
-      <div class="navigation-btns">
-        <a href="#" class="btn-signout">Sign Out</a>
-      </div>
-      <div class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
-      </div>
-    </nav>
+    /* Membership Info Styles */
+    .membership-info {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .membership-info p {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+    .membership-info strong {
+      color: #495057;
+    }
+  </style>
+</head>
+<body class="bg-cover-center bg-overlay">
+  <!-- Navigation -->
+  <nav class="navigation"class="logo">>
+    <a href="index.html" class="logo" aria-label="Gym Home"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+    </div>
+    <div class="navigation-btns">
+      <a href="#" class="btn-signout">Sign Out</a>
+    </div>
+  </nav>
 
-    <!-- Dashboard Container -->
-    <div class="dashboard-container">
-      <h1>Welcome, <span id="user-name">Member</span>!</h1>
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    <h1>Welcome, <span id="user-name">Member</span>!</h1>
 
-      <!-- Tab Navigation -->
-      <div class="dashboard-tabs">
-        <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
-        <button class="tab-btn" data-tab="profile">My Profile</button>
-        <button class="tab-btn" data-tab="membership">My Membership</button>
-        <button class="tab-btn" data-tab="classes">My Classes</button>
-      </div>
+    <!-- Tab Navigation -->
+    <div class="dashboard-tabs">
+      <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+      <button class="tab-btn" data-tab="profile">My Profile</button>
+      <button class="tab-btn" data-tab="membership">My Membership</button>
+      <button class="tab-btn" data-tab="classes">My Classes</button>
+    </div>
 
-      <!-- Section: Dashboard Overview -->
-      <div class="dashboard-section" id="dashboard-section">
-        <div class="dashboard-summary">
-          <div class="summary-card">
-            <h3>Upcoming Classes</h3>
-            <ul id="summary-classes">
-              <li>Loading...</li>
-            </ul>
-          </div>
-          <div class="summary-card">
-            <h3>Next Payment Due</h3>
-            <p>
-              <strong>End Date:</strong>
-              <span id="summary-end-date">Loading...</span>
-            </p>
-            <button id="manage-membership-btn">Manage Membership</button>
-          </div>
+    <!-- Section: Dashboard Overview -->
+    <div class="dashboard-section" id="dashboard-section">
+      <div class="dashboard-summary">
+        <div class="summary-card">
+          <h3>Upcoming Classes</h3>
+          <ul id="summary-classes">
+            <li>Loading...</li>
+          </ul>
         </div>
-      </div>
-
-      <!-- Section: Profile -->
-      <div class="dashboard-section" id="profile-section" style="display: none">
-        <h2>Edit My Profile</h2>
-        <form id="profile-form">
-          <label
-            >First Name:
-            <input type="text" id="firstName" required />
-          </label>
-          <label
-            >Last Name:
-            <input type="text" id="lastName" required />
-          </label>
-          <label
-            >Email:
-            <input type="email" id="email" required />
-          </label>
-          <label
-            >Phone:
-            <input type="text" id="phone" />
-          </label>
-          <label
-            >Password:
-            <input
-              type="password"
-              id="password"
-              placeholder="Leave blank to keep current"
-            />
-          </label>
-          <label
-            >Confirm Password:
-            <input
-              type="password"
-              id="confirmPassword"
-              placeholder="Confirm new password"
-            />
-          </label>
-          <button type="submit">Update Profile</button>
-        </form>
-      </div>
-
-      <!-- Section: Membership -->
-      <div
-        class="dashboard-section"
-        id="membership-section"
-        style="display: none"
-      >
-        <h2>My Membership Details</h2>
-        <div class="membership-details">
-          <div class="membership-info">
-            <p>
-              <strong>Current Plan:</strong> <span id="plan-name">...</span>
-            </p>
-            <p>
-              <strong>Start Date:</strong> <span id="plan-start-date">...</span>
-            </p>
-            <p>
-              <strong>Renewal Date:</strong> <span id="plan-end-date">...</span>
-            </p>
-            <p>
-              <strong>Status:</strong> <span id="membership-status">...</span>
-            </p>
-            <button
-              id="confirm-payment-btn"
-              class="action-btn"
-              style="display: none"
-            >
-              Confirm Payment
-            </button>
-          </div>
-          <div class="membership-actions">
-            <button id="renew-membership-btn" class="action-btn">
-              Renew Membership
-            </button>
-            <button id="upgrade-membership-btn" class="action-btn">
-              Upgrade Plan
-            </button>
-            <button id="cancel-membership-btn" class="action-btn danger">
-              Cancel Membership
-            </button>
-          </div>
-        </div>
-
-        <!-- Upgrade Plan Modal -->
-        <div id="upgrade-modal" class="modal" style="display: none">
-          <div class="modal-content">
-            <h3>Upgrade Your Membership</h3>
-            <div id="available-plans"></div>
-            <button id="close-modal">Close</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Section: My Classes -->
-      <div class="dashboard-section" id="classes-section" style="display: none">
-        <h2>My Classes</h2>
-        <div class="classes-container">
-          <div class="available-classes">
-            <h3>Available Classes</h3>
-            <ul id="available-classes-list"></ul>
-          </div>
-          <div class="registered-classes">
-            <h3>Registered Classes</h3>
-            <ul id="registered-classes-list"></ul>
-          </div>
+        <div class="summary-card">
+          <h3>Next Payment Due</h3>
+          <p><strong>End Date:</strong> <span id="summary-end-date">Loading...</span></p>
+          <button id="manage-membership-btn">Manage Membership</button>
         </div>
       </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="../Javascript/user_dashboard.js"></script>
-    <script src="../Javascript/logout.js"></script>
-    <script>
-      const hamburger = document.getElementById("hamburger");
-      const navLinks = document.querySelector(".nav-links");
+    <!-- Section: Profile -->
+    <div class="dashboard-section" id="profile-section" style="display: none;">
+      <h2>Edit My Profile</h2>
+      <form id="profile-form">
+        <label>First Name:
+          <input type="text" id="firstName" required />
+        </label>
+        <label>Last Name:
+          <input type="text" id="lastName" required />
+        </label>
+        <label>Email:
+          <input type="email" id="email" required />
+        </label>
+        <label>Phone:
+          <input type="text" id="phone" />
+        </label>
+        <label>Password:
+          <input type="password" id="password" placeholder="Leave blank to keep current" />
+        </label>
+        <label>Confirm Password:
+          <input type="password" id="confirmPassword" placeholder="Confirm new password" />
+        </label>
+        <button type="submit">Update Profile</button>
+      </form>
+    </div>
 
-      hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
-    </script>
-  </body>
+    <!-- Section: Membership -->
+    <div class="dashboard-section" id="membership-section" style="display: none;">
+      <h2>My Membership Details</h2>
+      <div class="membership-details">
+        <div class="membership-info">
+          <p><strong>Current Plan:</strong> <span id="plan-name">...</span></p>
+          <p><strong>Start Date:</strong> <span id="plan-start-date">...</span></p>
+          <p><strong>Renewal Date:</strong> <span id="plan-end-date">...</span></p>
+          <p><strong>Status:</strong> <span id="membership-status">...</span></p>
+          <button id="confirm-payment-btn" class="action-btn" style="display:none;">Confirm Payment</button>
+        </div>
+        <div class="membership-actions">
+          <button id="renew-membership-btn" class="action-btn">Renew Membership</button>
+          <button id="upgrade-membership-btn" class="action-btn">Upgrade Plan</button>
+          <button id="cancel-membership-btn" class="action-btn danger">Cancel Membership</button>
+        </div>
+      </div>
+      
+      <!-- Upgrade Plan Modal -->
+      <div id="upgrade-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+          <h3>Upgrade Your Membership</h3>
+          <div id="available-plans"></div>
+          <button id="close-modal">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: My Classes -->
+    <div class="dashboard-section" id="classes-section" style="display: none;">
+      <h2>My Classes</h2>
+      <div class="classes-container">
+        <div class="available-classes">
+          <h3>Available Classes</h3>
+          <ul id="available-classes-list"></ul>
+        </div>
+        <div class="registered-classes">
+          <h3>Registered Classes</h3>
+          <ul id="registered-classes-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../Javascript/user_dashboard.js"></script>
+  <script src="../Javascript/logout.js"></script>
+</body>
 </html>

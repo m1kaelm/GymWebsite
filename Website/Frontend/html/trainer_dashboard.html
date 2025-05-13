@@ -11,7 +11,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <!-- Add FullCalendar CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css"
+      rel="stylesheet"
+    />
     <style>
       .modal {
         display: block;
@@ -20,7 +23,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
       }
       .modal-content {
         background-color: white;
@@ -53,7 +56,7 @@
         transition: background-color 0.3s;
       }
       #clock-in-btn {
-        background-color: #4CAF50;
+        background-color: #4caf50;
         color: white;
       }
       #clock-in-btn:hover {
@@ -74,7 +77,8 @@
         border-collapse: collapse;
         margin-top: 10px;
       }
-      .clock-history th, .clock-history td {
+      .clock-history th,
+      .clock-history td {
         padding: 8px;
         text-align: left;
         border-bottom: 1px solid #ddd;
@@ -129,6 +133,9 @@
 
       <div class="navigation-btns">
         <a href="#" class="btn-signout">Sign Out</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
       </div>
     </nav>
 
@@ -197,7 +204,7 @@
     </div>
 
     <!-- Shift Details Modal -->
-    <div id="shift-details-modal" class="modal" style="display:none;">
+    <div id="shift-details-modal" class="modal" style="display: none">
       <div class="modal-content">
         <span class="close" id="close-shift-modal">&times;</span>
         <h3>Shift Details</h3>
@@ -211,6 +218,13 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script src="../Javascript/trainer_dashboard.js"></script>
     <script src="../Javascript/logout.js"></script>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
 
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>

@@ -1,154 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flex Gym - Classes</title>
-  <link rel="stylesheet" href="../Css/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Gym - Classes</title>
+    <link rel="stylesheet" href="../Css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
 
-    .class-section {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+      .class-section {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
 
-    .class-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
+      .class-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
 
-    .class-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      text-align: center;
-    }
+      .class-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        text-align: center;
+      }
 
-    .class-card:hover {
-      transform: translateY(-5px);
-    }
+      .class-card:hover {
+        transform: translateY(-5px);
+      }
 
-    .class-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+      .class-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
 
-    .class-card h3 {
-      font-size: 1.4em;
-      margin: 15px 0 5px;
-    }
+      .class-card h3 {
+        font-size: 1.4em;
+        margin: 15px 0 5px;
+      }
 
-    .class-card p {
-      font-size: 0.95em;
-      color: #555;
-    }
+      .class-card p {
+        font-size: 0.95em;
+        color: #555;
+      }
 
-    .class-card a {
-      display: inline-block;
-      margin: 15px 0 20px;
-      padding: 10px 20px;
-      background: #ff5e5e;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
+      .class-card a {
+        display: inline-block;
+        margin: 15px 0 20px;
+        padding: 10px 20px;
+        background: #ff5e5e;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.3s;
+      }
 
-    .class-card a:hover {
-      background: #e04343;
-    }
+      .class-card a:hover {
+        background: #e04343;
+      }
 
-    .gym-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin-top: 40px;
-    }
+      .gym-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-top: 40px;
+      }
 
-    footer {
-      background-color: #222;
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body class="bg-cover-center">
-  
-  <!-- Navigation Bar -->
-  <nav class="navigation">
-    <a href="index.html" class="logo"></a>
+      footer {
+        background-color: #222;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body class="bg-cover-center">
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+      <a href="index.html" class="logo"></a>
 
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="classes.html">Classes</a>
-      <a href="membershipInfo.html">Membership</a>
-      <a href="about.html">About</a>
-    </div>
-
-    <div class="navigation-btns">
-      <a href="register.html" title="Register">
-        <i class="fas fa-user-plus"></i> Sign Up
-      </a>
-      <a href="login.html" title="Login">
-        <i class="fas fa-sign-in-alt"></i> Login
-      </a>
-    </div>
-  </nav>
-
-  <!-- Class Section -->
-  <section class="class-section">
-    <h2 style="text-align: center;">Explore Our Classes</h2>
-    <div class="class-cards">
-
-      <!-- Strength Training -->
-      <div class="class-card">
-        <img src="https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Strength Training">
-        <h3>🏋️ Strength Training</h3>
-        <p>Build power and endurance. </p>
-        <a href="register.html">Book Now</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="classes.html">Classes</a>
+        <a href="membershipInfo.html">Membership</a>
+        <a href="about.html">About</a>
       </div>
 
-      <!-- Yoga -->
-      <div class="class-card">
-        <img src="https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Yoga Class">
-        <h3>🧘 Yoga</h3>
-        <p>Improve flexibility and calm your mind.</p>
-        <a href="register.html">Book Now</a>
+      <div class="navigation-btns">
+        <a href="register.html" title="Register">
+          <i class="fas fa-user-plus"></i> Sign Up
+        </a>
+        <a href="login.html" title="Login">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
       </div>
-
-      <!-- Boxing -->
-      <div class="class-card">
-        <img src="https://images.pexels.com/photos/4761793/pexels-photo-4761793.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Boxing Class">
-        <h3>🥊 Boxing</h3>
-        <p>High-intensity training for strength and speed.</p>
-        <a href="register.html">Book Now</a>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
       </div>
+    </nav>
 
-    </div>
-  </section>
+    <!-- Class Section -->
+    <section class="class-section">
+      <h2 style="text-align: center">Explore Our Classes</h2>
+      <div class="class-cards">
+        <!-- Strength Training -->
+        <div class="class-card">
+          <img
+            src="https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            alt="Strength Training"
+          />
+          <h3>🏋️ Strength Training</h3>
+          <p>Build power and endurance.</p>
+          <a href="register.html">Book Now</a>
+        </div>
 
-  <!-- Additional Gym Atmosphere Images for Scroll -->
-  <img src="https://www.villagegym.co.uk/media/5752/jebson-74.jpg" alt="Gym Vibe 1" class="gym-image">
-  <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Gym Vibe 2" class="gym-image">
-  <img src="https://www.primalstrength.com/cdn/shop/files/gymdesign_render_Two_collumn_grid_cb1b5850-fa8e-4a7b-a2b3-190c2e45facd.jpg?v=1680719688&width=1500" alt="Gym Vibe 3" class="gym-image">
+        <!-- Yoga -->
+        <div class="class-card">
+          <img
+            src="https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            alt="Yoga Class"
+          />
+          <h3>🧘 Yoga</h3>
+          <p>Improve flexibility and calm your mind.</p>
+          <a href="register.html">Book Now</a>
+        </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Flex Gym. All rights reserved.</p>
-  </footer>
+        <!-- Boxing -->
+        <div class="class-card">
+          <img
+            src="https://images.pexels.com/photos/4761793/pexels-photo-4761793.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            alt="Boxing Class"
+          />
+          <h3>🥊 Boxing</h3>
+          <p>High-intensity training for strength and speed.</p>
+          <a href="register.html">Book Now</a>
+        </div>
+      </div>
+    </section>
 
-</body>
+    <!-- Additional Gym Atmosphere Images for Scroll -->
+    <img
+      src="https://www.villagegym.co.uk/media/5752/jebson-74.jpg"
+      alt="Gym Vibe 1"
+      class="gym-image"
+    />
+    <img
+      src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+      alt="Gym Vibe 2"
+      class="gym-image"
+    />
+    <img
+      src="https://www.primalstrength.com/cdn/shop/files/gymdesign_render_Two_collumn_grid_cb1b5850-fa8e-4a7b-a2b3-190c2e45facd.jpg?v=1680719688&width=1500"
+      alt="Gym Vibe 3"
+      class="gym-image"
+    />
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Flex Gym. All rights reserved.</p>
+    </footer>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
 </html>

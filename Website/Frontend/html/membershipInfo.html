@@ -1,177 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flex Gym - Memberships</title>
-  <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Gym - Memberships</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+      }
 
-    .membership {
-      padding: 40px 20px;
-      text-align: center;
-    }
+      .membership {
+        padding: 40px 20px;
+        text-align: center;
+      }
 
-    .membership h2 {
-      font-size: 2em;
-      margin-bottom: 40px;
-    }
+      .membership h2 {
+        font-size: 2em;
+        margin-bottom: 40px;
+      }
 
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+      .plans {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-    .plan {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease;
-      text-decoration: none;
-      color: inherit;
-    }
+      .plan {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+      }
 
-    .plan:hover {
-      transform: translateY(-5px);
-    }
+      .plan:hover {
+        transform: translateY(-5px);
+      }
 
-    .plan img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
+      .plan img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
 
-    .plan h3 {
-      margin: 15px 0 10px;
-      font-size: 1.5em;
-    }
+      .plan h3 {
+        margin: 15px 0 10px;
+        font-size: 1.5em;
+      }
 
-    .plan p {
-      font-size: 1.2em;
-      color: #333;
-    }
+      .plan p {
+        font-size: 1.2em;
+        color: #333;
+      }
 
-    .plan ul {
-      list-style: none;
-      padding: 0;
-      margin: 15px 0 20px;
-    }
+      .plan ul {
+        list-style: none;
+        padding: 0;
+        margin: 15px 0 20px;
+      }
 
-    .plan ul li {
-      padding: 5px 0;
-      color: #555;
-    }
+      .plan ul li {
+        padding: 5px 0;
+        color: #555;
+      }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      background: #ff5e5e;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      margin-top: 30px;
-      transition: background 0.3s;
-    }
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #ff5e5e;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        margin-top: 30px;
+        transition: background 0.3s;
+      }
 
-    .btn:hover {
-      background: #e04343;
-    }
+      .btn:hover {
+        background: #e04343;
+      }
 
-    footer {
-      background-color: #222;
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body class="bg-cover-center">
+      footer {
+        background-color: #222;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body class="bg-cover-center">
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+      <a href="index.html" class="logo"></a>
 
-  <!-- Navigation Bar -->
-  <nav class="navigation">
-    <a href="index.html" class="logo"></a>
-
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="classes.html">Classes</a>
-      <a href="membershipInfo.html">Membership</a>
-      <a href="about.html">About</a>
-    </div>
-
-    <div class="navigation-btns">
-      <a href="register.html" title="Register">
-        <i class="fas fa-user-plus"></i> Sign Up
-      </a>
-      <a href="login.html" title="Login">
-        <i class="fas fa-sign-in-alt"></i> Login
-      </a>
-    </div>
-  </nav>
-
-  <!-- Membership Section -->
-  <section class="membership">
-    <div class="container">
-      <h2>Membership Plans</h2>
-      <div class="plans">
-
-        <!-- Basic Plan -->
-        <a href="register.html" class="plan">
-          <img src="https://www.yourworkspace.com/wp-content/uploads/2024/08/DSC00021-HDR.png" alt="Basic Plan">
-          <h3>Basic</h3>
-          <p>£20/month</p>
-          <ul>
-            <li>Gym Access (Weekdays)</li>
-            <li>Free Locker Usage</li>
-            <li>Email Support</li>
-          </ul>
-        </a>
-
-        <!-- Standard Plan -->
-        <a href="register.html" class="plan">
-          <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1050&q=80" alt="Standard Plan">
-          <h3>Standard</h3>
-          <p>£35/month</p>
-          <ul>
-            <li>Unlimited Gym Access</li>
-            <li>Free Locker & Shower</li>
-            <li>2 Group Classes per Week</li>
-            <li>Priority Email Support</li>
-          </ul>
-        </a>
-
-        <!-- Premium Plan -->
-        <a href="register.html" class="plan">
-          <img src="https://www.villagegym.co.uk/media/4654/swansea-sauna.jpg" alt="Premium Plan">
-          <h3>Premium</h3>
-          <p>£50/month</p>
-          <ul>
-            <li>Unlimited Gym & Classes</li>
-            <li>Personal Trainer (2 sessions/month)</li>
-            <li>Sauna & Spa Access</li>
-            <li>Priority Phone & Email Support</li>
-          </ul>
-        </a>
-
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="classes.html">Classes</a>
+        <a href="membershipInfo.html">Membership</a>
+        <a href="about.html">About</a>
       </div>
-      <a href="register.html" class="btn">Join Now</a>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Flex Gym. All rights reserved.</p>
-  </footer>
+      <div class="navigation-btns">
+        <a href="register.html" title="Register">
+          <i class="fas fa-user-plus"></i> Sign Up
+        </a>
+        <a href="login.html" title="Login">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
 
-</body>
+    <!-- Membership Section -->
+    <section class="membership">
+      <div class="container">
+        <h2>Membership Plans</h2>
+        <div class="plans">
+          <!-- Basic Plan -->
+          <a href="register.html" class="plan">
+            <img
+              src="https://www.yourworkspace.com/wp-content/uploads/2024/08/DSC00021-HDR.png"
+              alt="Basic Plan"
+            />
+            <h3>Basic</h3>
+            <p>£20/month</p>
+            <ul>
+              <li>Gym Access (Weekdays)</li>
+              <li>Free Locker Usage</li>
+              <li>Email Support</li>
+            </ul>
+          </a>
+
+          <!-- Standard Plan -->
+          <a href="register.html" class="plan">
+            <img
+              src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1050&q=80"
+              alt="Standard Plan"
+            />
+            <h3>Standard</h3>
+            <p>£35/month</p>
+            <ul>
+              <li>Unlimited Gym Access</li>
+              <li>Free Locker & Shower</li>
+              <li>2 Group Classes per Week</li>
+              <li>Priority Email Support</li>
+            </ul>
+          </a>
+
+          <!-- Premium Plan -->
+          <a href="register.html" class="plan">
+            <img
+              src="https://www.villagegym.co.uk/media/4654/swansea-sauna.jpg"
+              alt="Premium Plan"
+            />
+            <h3>Premium</h3>
+            <p>£50/month</p>
+            <ul>
+              <li>Unlimited Gym & Classes</li>
+              <li>Personal Trainer (2 sessions/month)</li>
+              <li>Sauna & Spa Access</li>
+              <li>Priority Phone & Email Support</li>
+            </ul>
+          </a>
+        </div>
+        <a href="register.html" class="btn">Join Now</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Flex Gym. All rights reserved.</p>
+    </footer>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
 </html>

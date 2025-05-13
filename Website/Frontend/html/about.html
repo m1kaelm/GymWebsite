@@ -11,11 +11,9 @@
     />
   </head>
   <body class="bg-cover-center">
-
-      
-    <navigation class="navigation">
+    <nav class="navigation">
       <a href="index.html" class="logo"></a>
-    
+
       <!-- Main Navigation Links -->
       <div class="nav-links">
         <a href="index.html">Home</a>
@@ -23,7 +21,7 @@
         <a href="membershipInfo.html">Membership</a>
         <a href="about.html">About</a>
       </div>
-    
+
       <!-- Auth Buttons (Sign Up & Login) -->
       <div class="navigation-btns">
         <a href="register.html" title="Register">
@@ -33,14 +31,11 @@
           <i class="fas fa-sign-in-alt"></i> Login
         </a>
       </div>
-    </navigation>
-    
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
 
-
-
-
-
-    
     <section class="content">
       <h1>About Flex Gym</h1>
       <h2>Who We Are</h2>
@@ -53,5 +48,13 @@
     <footer>
       <p>© 2025 Flex Gym. All rights reserved.</p>
     </footer>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>

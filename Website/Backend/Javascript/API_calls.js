@@ -79,7 +79,7 @@ router.get('/members/search', (req, res) => {
     // Ensure only valid column names are allowed to prevent SQL injection
     const allowedColumns = ["id", "first_name", "last_name", "email", "phone_number"];
     if (!allowedColumns.includes(column)) {
-        console.error("❌ [VERBOSE] Invalid Column Requested:", column);
+        console.error(" [VERBOSE] Invalid Column Requested:", column);
         return res.status(400).json({ error: "Invalid column name" });
     }
 
@@ -94,7 +94,7 @@ router.get('/members/search', (req, res) => {
 
     db.all(query, [searchValue], (err, rows) => {
         if (err) {
-            console.error("❌ [VERBOSE] Database Error:", err);
+            console.error(" [VERBOSE] Database Error:", err);
             return res.status(500).json({ error: err.message });
         }
         
@@ -471,10 +471,12 @@ router.get('/database/:table', (req, res) => {
 // ====== LOGIN ======
 router.post('/login', (req, res) => {
     if (!req.body || !req.body.email || !req.body.password) {
+        console.log(" Login attempt failed: Missing email or password");
         return res.status(400).json({ error: "Email and password required" });
       }
       const { email, password } = req.body;
       
+    console.log(`👤 Login attempt for email: ${email}`);
 
     const roles = [
         { table: "admins", role: "admin", idField: "id", nameField: "first_name" },
@@ -485,16 +487,25 @@ router.post('/login', (req, res) => {
 
     const tryNext = (index) => {
         if (index >= roles.length) {
+            console.log(` Login failed: No matching credentials found for ${email}`);
             return res.status(401).json({ error: "Invalid email or password" });
         }
 
         const { table, role, idField, nameField } = roles[index];
+        console.log(` Checking ${table} table for user...`);
+        
         db.get(`SELECT * FROM ${table} WHERE email = ?`, [email], (err, user) => {
-            if (err) return res.status(500).json({ error: "Database error" });
+            if (err) {
+                console.error(` Database error while checking ${table}:`, err);
+                return res.status(500).json({ error: "Database error" });
+            }
 
             if (!user || user.password !== password) {
+                console.log(` No match found in ${table}, trying next role...`);
                 return tryNext(index + 1); // Try next role
             }
+
+            console.log(` Login successful for ${user[nameField]} (${role})`);
 
             req.session.user = {
                 id: user[idField],

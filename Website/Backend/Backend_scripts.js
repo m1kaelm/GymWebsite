@@ -149,7 +149,7 @@ function searchMember() {
                     populateUpdateForm(data[0]);
                 }
             })
-            .catch(err => console.error("❌ [VERBOSE] Error Fetching Member:", err));
+            .catch(err => console.error(" [VERBOSE] Error Fetching Member:", err));
     });
 }
 
@@ -164,7 +164,7 @@ function populateUpdateForm(memberData = null) {
                 .then(member => {
                     fillUpdateForm(member);
                 })
-                .catch(err => console.error("❌ [VERBOSE] Error fetching member details:", err));
+                .catch(err => console.error(" [VERBOSE] Error fetching member details:", err));
         });
     } else if (memberData) {
         fillUpdateForm(memberData);
@@ -387,11 +387,11 @@ function loginMember() {
             
 
             if (data.error) {
-                document.getElementById("loginResponse").innerText = "❌ " + data.error;
+                document.getElementById("loginResponse").innerText = " " + data.error;
             } else {
-                document.getElementById("loginResponse").innerText = `✅ Welcome, ${data.name}!`;
+                document.getElementById("loginResponse").innerText = ` Welcome, ${data.name}!`;
             }
         })
-        .catch(err => console.error("❌ [VERBOSE] Error Logging In:", err));
+        .catch(err => console.error(" [VERBOSE] Error Logging In:", err));
     });
 }

@@ -12,20 +12,24 @@ app.use(express.json()); //enables parsing of JSON bodies
 
 // Middleware
 app.use(cors({
-    origin: true, // Allow all origins in development
-    credentials: true
-  }));
+    origin: 'http://localhost:3000', // Specify exact origin
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
   
 
 // Add session handling
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'secret-key',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 30 * 60 * 1000, // 30 minutes
-    sameSite: 'lax'
-  }
+    secret: process.env.SESSION_SECRET || 'secret-key',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 24 * 60 * 60 * 1000, // 24 hours
+        sameSite: 'lax',
+        secure: false, // Set to true in production with HTTPS
+        httpOnly: true
+    }
 }));
 
 app.use('/html', express.static(path.join(__dirname, '../../Frontend/html')));

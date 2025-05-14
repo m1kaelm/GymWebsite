@@ -52,49 +52,6 @@
       .button:hover {
         background: #d64028;
       }
-
-      /* Hamburger style (if not in main css) */
-      .hamburger {
-        display: none;
-        font-size: 2rem;
-        cursor: pointer;
-        color: white;
-        z-index: 1001;
-      }
-
-      @media (max-width: 768px) {
-        .navigation {
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 1rem;
-        }
-        .hamburger {
-          display: block;
-          margin-left: auto;
-        }
-        .nav-links,
-        .navigation-btns {
-          display: none;
-          flex-direction: column;
-          width: 100%;
-          background-color: rgba(0, 0, 0, 0.8);
-          margin-top: 10px;
-          padding: 0 1rem;
-        }
-        .nav-links.active,
-        .navigation-btns.active {
-          display: flex;
-        }
-        .nav-links a,
-        .navigation-btns a {
-          width: 100%;
-          padding: 1rem;
-          text-align: center;
-          font-size: 1.2rem;
-          border-radius: 8px;
-          margin-bottom: 0.5rem;
-        }
-      }
     </style>
   </head>
 
@@ -115,6 +72,7 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="classes.html">Classes</a>
+        <a href="exercise_guide.html">Exercise guide</a>
         <a href="membershipInfo.html">Membership</a>
         <a href="about.html">About</a>
       </div>
@@ -211,7 +169,6 @@
     <!-- Background Video Script -->
     <script src="../Javascript/bg-video.js"></script>
 
-    <!-- Hamburger Menu Script -->
     <script>
       const hamburger = document.getElementById("hamburger");
       const navLinks = document.querySelector(".nav-links");

@@ -165,14 +165,19 @@
       });
     </script>
 
-    <!-- Hamburger Script -->
+       </script>
+
     <script>
       const hamburger = document.getElementById("hamburger");
       const navLinks = document.querySelector(".nav-links");
+      const navigationBtns = document.querySelector(".navigation-btns");
 
       hamburger.addEventListener("click", () => {
         navLinks.classList.toggle("active");
+        navigationBtns.classList.toggle("active");
       });
     </script>
   </body>
 </html>
+
+  

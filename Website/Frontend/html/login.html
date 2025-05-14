@@ -10,42 +10,58 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
   </head>
-  <body class="bg-cover-center bg-overlay">
+
+  <body class="page-login">
     <!-- Navigation Bar -->
-    <navigation class="navigation">
-      <a href="index.html" class="logo"></a>
-    
-      <!-- Main Navigation Links -->
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="classes.html">Classes</a>
-        <a href="membershipInfo.html">Membership</a>
-        <a href="about.html">About</a>
-      </div>
-    
-      <!-- Auth Buttons (Sign Up & Login) -->
-      <div class="navigation-btns">
-        <a href="register.html" title="Register">
+ <nav class="navigation">
+  <a href="index.html" class="logo"></a>
+
+  <div class="hamburger" id="hamburger">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="classes.html">Classes</a>
+     <a href="exercise_guide.html">Exercise guide</a>
+    <a href="membershipInfo.html">Membership</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="navigation-btns">
+    <a href="register.html" title="Register">
           <i class="fas fa-user-plus"></i> Sign Up
         </a>
-      </div>
-    </navigation>
+  </div>
+</nav>
+
+
 
     <!-- Login Form -->
-    <div class="wrapper">
-      <div class="title-text">
-        <div class="title login">Log In</div>
-      </div>
-
+    <div class="login-container">
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title login">Log In</div>
+    </div>
       <div class="form-container">
         <form id="login-form">
           <div class="field">
             <label><strong>Email Address</strong></label>
-            <input type="email" id="email" placeholder="Enter your email" required />
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
           </div>
           <div class="field">
             <label><strong>Password</strong></label>
-            <input type="password" id="password" placeholder="Enter your password" required />
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
           </div>
           <div class="field btn">
             <input type="submit" value="Sign In" />
@@ -54,10 +70,20 @@
             Don't have an account? <a href="register.html">Sign Up</a>
           </div>
         </form>
-        
       </div>
     </div>
-    <script src="../Javascript/login.js"></script>
 
+    <!-- JavaScript -->
+    <script src="../Javascript/login.js"></script>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
+      const navigationBtns = document.querySelector(".navigation-btns");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        navigationBtns.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>

@@ -4,13 +4,7 @@ body {
   margin: 0;
   padding: 0;
   background: #f4f4f4;
-  
 }
-
-
-
-
-
 
 /* =========================== */
 /* === NAVIGATION BAR === */
@@ -63,26 +57,21 @@ body {
   margin-right: 5px;
 }
 
-
 /* =========================== */
 /* === LOGO === */
 .logo {
   display: block;
   height: 100%;
   aspect-ratio: 3 / 1;
-  background-image: url('../../media/logo.jpg');
+  background-image: url("../../media/logo.jpg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 /* =========================== */
 
-
-
-
 /* =========================== */
 /*Header*/
-
 
 header .container {
   display: flex;
@@ -96,12 +85,9 @@ header h1 {
   color: #ffffff;
 }
 
-
 header {
   background-color: #000000a9;
 }
-
-
 
 /* Content Section */
 .content {
@@ -109,12 +95,7 @@ header {
   background-color: #2ec7b0;
 }
 
-
-
-
-
 /* Container */
-
 
 .container {
   width: 90%;
@@ -123,13 +104,6 @@ header {
   padding: 20px;
   text-align: center;
 }
-
-
-
-
-
-
-
 
 .btn {
   display: inline-block;
@@ -156,7 +130,6 @@ header {
   text-align: center;
   padding: 100px 20px;
   color: black;
-
 }
 
 .index_hero h2 {
@@ -170,9 +143,6 @@ header {
   color: #fff;
 }
 
-
-
-
 /* Features */
 .features {
   display: flex;
@@ -183,15 +153,13 @@ header {
   text-align: center;
 }
 
-
 .feature {
   width: 30%;
-  color: white
+  color: white;
 }
 
-
-.feature p{
-  color: white
+.feature p {
+  color: white;
 }
 /* Footer */
 footer {
@@ -205,10 +173,7 @@ footer {
   left: 0;
 }
 
-
-
-
- /* =========================== */ 
+/* =========================== */
 /* ===Membership page =====*/
 .membership {
   text-align: center;
@@ -246,8 +211,6 @@ footer {
   color: #333;
 }
 
-
-
 /* =========================== */
 /*======= Background Video =====*/
 #bgVideo {
@@ -262,10 +225,6 @@ footer {
 
 /* =========================== */
 
-
-
-
-
 /* =========================== */
 /* ====== REGISTER PAGE ====== */
 .registration-container {
@@ -277,8 +236,6 @@ footer {
   width: 100%;
   margin: 2rem auto;
 }
-
-
 
 #progress-bar {
   text-align: center;
@@ -297,7 +254,8 @@ footer {
   display: flex;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
@@ -352,15 +310,12 @@ input[type="checkbox"] {
 
 /* =========================== */
 
-
-
-
 /* ========================================= */
 /*============ BACKGROUND IMAGE ============*/
 /* Just change the path for a different image */
 
 .bg-cover-center {
-  background-image: url('../../media/Background_Image1.jpg');
+  background-image: url("../../media/Background_Image1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -379,19 +334,10 @@ input[type="checkbox"] {
   z-index: -1;
 }
 
-
-
-
-
-
-
-
-
-
 /* ====================LOGIN===================== */
 /* Page Background */
 .page-login {
-  background-image: url('../../GymWebsite/Website/media/Background_Image1.jpg');
+  background-image: url("../../GymWebsite/Website/media/Background_Image1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -486,9 +432,6 @@ input[type="checkbox"] {
 .signup-link a:hover {
   text-decoration: underline;
 }
-
-
-
 
 /* ======= User Dashboard ========== */
 
@@ -681,13 +624,6 @@ input[type="checkbox"] {
   }
 }
 
-
-
-
-
-
-
-
 .btn-update {
   padding: 0.6rem 1.2rem;
   border: none;
@@ -716,21 +652,6 @@ input[type="checkbox"] {
   background-color: #c2361f;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ============= ADMIN DASHBOARD ============ */
 
 .admin-tabs {
@@ -755,8 +676,6 @@ input[type="checkbox"] {
   background: #222;
 }
 
-
-
 /* === SEARCH BAR STYLING === */
 .search-bar {
   display: flex;
@@ -773,7 +692,6 @@ input[type="checkbox"] {
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
-  
 }
 .search-bar input {
   flex: 1;
@@ -794,9 +712,6 @@ input[type="checkbox"] {
 .search-bar button:hover {
   background: #222;
 }
-
-
-
 
 .table-explorer {
   margin-bottom: 1rem;
@@ -828,7 +743,8 @@ input[type="checkbox"] {
   overflow: hidden;
 }
 
-#trainers-table th, #trainers-table td {
+#trainers-table th,
+#trainers-table td {
   padding: 12px 16px;
   text-align: left;
   border-bottom: 1px solid #eee;
@@ -854,7 +770,6 @@ input[type="checkbox"] {
   background-color: #d64028;
 }
 
-
 .admin-section h2 {
   font-size: 1.6rem;
   margin-bottom: 0.3rem;
@@ -866,7 +781,6 @@ input[type="checkbox"] {
   margin-bottom: 1rem;
   color: #444;
 }
-
 
 #classes-output table {
   width: 100%;
@@ -921,7 +835,7 @@ input[type="checkbox"] {
   width: 100vw;
   height: 100vh;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .modal-content {
@@ -932,7 +846,7 @@ input[type="checkbox"] {
   width: 90%;
   max-width: 400px;
   border-radius: 10px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
   color: #222;
   position: relative;
 }
@@ -967,6 +881,7 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+/* === Modal responsiveness === */
 @media (max-width: 600px) {
   .modal-content {
     padding: 16px 8px;
@@ -975,7 +890,7 @@ input[type="checkbox"] {
   }
 }
 
-/* Three columns side by side */
+/* === Columns Layout === */
 .column {
   float: left;
   width: 33.3%;
@@ -983,190 +898,260 @@ input[type="checkbox"] {
   padding: 0 72px;
 }
 
-/* Display the columns below each other instead of side by side on small screens */
-@media screen and (max-width: 650px) {
+@media (max-width: 650px) {
   .column {
     width: 100%;
     display: block;
   }
 }
-<<<<<<< HEAD
-=======
 
-/* Add some shadows to create a card effect */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
+/* === Hamburger Button === */
 
-/* Some left and right padding inside the container */
-.container {
-  padding: 0 16px;
-}
-
-/* Clear floats */
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.title {
-  color: grey;
-}
-
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
+/* === Slideshow images responsive === */
+.slideshow-container img {
   width: 100%;
+  height: auto;
 }
 
-.button:hover {
-  background-color: #555;
-}
-
-* {box-sizing:border-box}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 85%;
-  width: auto;
-  margin-top: -50px;
-  padding: 10px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-.slideshow-container {
-  max-width: 800px;
-  position: relative;
-  margin: auto;
-}
-
-.mySlides {
-  display: none;
-}
-
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  display: inline-block;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.active {
-  background-color: #7d6f2ee;
-}
-.about-intro {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  text-align: center;
-  color: #371d1d;
-}
-
+/* === About page intro text responsiveness === */
 .about-intro h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0px;
+  font-size: 2rem;
 }
 
 .about-intro h2 {
-  font-size: 1.2rem;
-  font-weight: normal;
-  line-height: 1.6;
+  font-size: 1.1rem;
 }
->>>>>>> 0b0b5b945324bea19539fa05387a29216199430c
+
+.page-login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../media/Background_Image1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.login-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+/* === Registration Container Styling === */
+.page-register {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url("../../media/Background_Image1.jpg") center/cover no-repeat;
+}
+
+.registration-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  max-width: 360px; /* <== smaller max width */
+  width: 90%;
+  margin: 140px auto;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  z-index: 1001;
+  margin-left: auto;
+  margin-right: 20px; /* Optional if you want a little space */
+}
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* <==== THIS IS VERY IMPORTANT */
+  }
+}
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .nav-links,
+  .navigation-btns {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+    padding: 0 1rem;
+  }
+
+  .nav-links.active,
+  .navigation-btns.active {
+    display: flex;
+  }
+
+  .nav-links a,
+  .navigation-btns a {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+}
+/* Membership Plans Section */
+.membership {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f8f8f8;
+}
+
+.membership h2 {
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.plan {
+  background: #9cdbcc;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.plan:hover {
+  transform: translateY(-5px);
+}
+
+.plan img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.plan h3 {
+  margin: 15px 0 10px;
+  font-size: 1.5em;
+}
+
+.plan p {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.plan ul {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 20px;
+}
+
+.plan ul li {
+  padding: 5px 0;
+  color: #555;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #ff5e5e;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 30px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #e04343;
+}
+/* === Classes Page === */
+.class-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.class-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.class-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.class-card:hover {
+  transform: translateY(-5px);
+}
+
+.class-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.class-card h3 {
+  font-size: 1.4em;
+  margin: 15px 0 5px;
+}
+
+.class-card p {
+  font-size: 0.95em;
+  color: #555;
+}
+
+.class-card a {
+  display: inline-block;
+  margin: 15px 0 20px;
+  padding: 10px 20px;
+  background: #ff5e5e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.class-card a:hover {
+  background: #e04343;
+}
+
+.gym-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 40px;
+}

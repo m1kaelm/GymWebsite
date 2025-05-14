@@ -10,26 +10,33 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
   </head>
-  <body class="bg-cover-center bg-overlay">
+
+  <body class="page-register">
     <!-- Navigation Bar -->
-    <navigation class="navigation">
+    <nav class="navigation">
       <a href="index.html" class="logo"></a>
-    
-      <!-- Main Navigation Links -->
+
+      <!-- Hamburger Button -->
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <!-- Navigation Links -->
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="classes.html">Classes</a>
+         <a href="exercise_guide.html">Exercise guide</a>
         <a href="membershipInfo.html">Membership</a>
         <a href="about.html">About</a>
       </div>
-    
-      <!-- Auth Buttons (Sign Up & Login) -->
+
+      <!-- Auth Buttons -->
       <div class="navigation-btns">
         <a href="login.html" title="Login">
           <i class="fas fa-sign-in-alt"></i> Login
         </a>
       </div>
-    </navigation>
+    </nav>
 
     <!-- Multi-Step Registration -->
     <div class="registration-container">
@@ -52,9 +59,17 @@
         <!-- Step 2: Membership -->
         <section class="form-step" data-step="2">
           <h2>Select Your Membership</h2>
-          <label><input type="radio" name="membership" value="basic" required> Basic</label>
-          <label><input type="radio" name="membership" value="plus"> Plus</label>
-          <label><input type="radio" name="membership" value="premium"> Premium</label>
+          <label
+            ><input type="radio" name="membership" value="basic" required />
+            Basic</label
+          >
+          <label
+            ><input type="radio" name="membership" value="plus" /> Plus</label
+          >
+          <label
+            ><input type="radio" name="membership" value="premium" />
+            Premium</label
+          >
           <button type="button" class="prev">Back</button>
           <button type="button" class="next">Continue</button>
         </section>
@@ -62,19 +77,29 @@
         <!-- Step 3: Account Details -->
         <section class="form-step" data-step="3">
           <h2>Account Details</h2>
-          <input type="text" name="firstName" placeholder="First Name" required>
-          <input type="text" name="lastName" placeholder="Last Name" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="password" name="password" placeholder="Password" required>
-          <input type="date" name="dob" required>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            required
+          />
+          <input type="text" name="lastName" placeholder="Last Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <input type="date" name="dob" required />
           <select name="gender">
             <option value="">Gender (Optional)</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
-          <input type="tel" name="phone" placeholder="Phone Number" required>
-          <input type="text" name="address" placeholder="Address" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required />
+          <input type="text" name="address" placeholder="Address" required />
           <button type="button" class="prev">Back</button>
           <button type="button" class="next">Continue</button>
         </section>
@@ -82,9 +107,14 @@
         <!-- Step 4: Bank Details -->
         <section class="form-step" data-step="4">
           <h2>Bank Details</h2>
-          <input type="text" name="cardNumber" placeholder="Card Number" required>
-          <input type="text" name="expiry" placeholder="MM/YY" required>
-          <input type="text" name="cvv" placeholder="CVV" required>
+          <input
+            type="text"
+            name="cardNumber"
+            placeholder="Card Number"
+            required
+          />
+          <input type="text" name="expiry" placeholder="MM/YY" required />
+          <input type="text" name="cvv" placeholder="CVV" required />
           <button type="button" class="prev">Back</button>
           <button type="button" class="next">Continue</button>
         </section>
@@ -93,7 +123,10 @@
         <section class="form-step" data-step="5">
           <h2>Confirm Your Details</h2>
           <p>Review everything before submitting.</p>
-          <label><input type="checkbox" required> I agree to the Terms and Conditions</label>
+          <label
+            ><input type="checkbox" required /> I agree to the Terms and
+            Conditions</label
+          >
           <button type="button" class="prev">Back</button>
           <button type="submit">Confirm & Join</button>
         </section>
@@ -102,5 +135,15 @@
 
     <!-- Scripts -->
     <script src="../Javascript/registration.js"></script>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
+      const navigationBtns = document.querySelector(".navigation-btns");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        navigationBtns.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>

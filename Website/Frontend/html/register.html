@@ -9,6 +9,62 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <style>
+      .error {
+        border-color: #ff4444 !important;
+      }
+      .error-message {
+        color: #ff4444;
+        font-size: 0.8em;
+        margin-top: 4px;
+        display: none;
+      }
+      .form-step input.error + .error-message {
+        display: block;
+      }
+      .form-step {
+        display: none;
+      }
+      .form-step.active {
+        display: block;
+      }
+      .form-step input,
+      .form-step select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .form-step label {
+        display: block;
+        margin: 8px 0;
+      }
+      .form-step button {
+        margin: 10px 5px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .form-step button.next {
+        background-color: #4CAF50;
+        color: white;
+      }
+      .form-step button.prev {
+        background-color: #666;
+        color: white;
+      }
+      .form-step button[type="submit"] {
+        background-color: #2196F3;
+        color: white;
+      }
+      #progress-bar {
+        text-align: center;
+        margin: 20px 0;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body class="bg-cover-center bg-overlay">
     <!-- Navigation Bar -->
@@ -36,7 +92,7 @@
       <h1>Join Flex Gym</h1>
       <div id="progress-bar">Step 1 of 5</div>
 
-      <form id="registration-form">
+      <form id="registration-form" novalidate>
         <!-- Step 1: Location -->
         <section class="form-step active" data-step="1">
           <h2>Select Your Location</h2>
@@ -46,45 +102,85 @@
             <option value="Manchester">Manchester</option>
             <option value="Birmingham">Birmingham</option>
           </select>
+          <div class="error-message">Please select a location</div>
           <button type="button" class="next">Continue</button>
         </section>
 
-        <!-- Step 2: Membership -->
+       <!-- Step 2: Membership -->
         <section class="form-step" data-step="2">
           <h2>Select Your Membership</h2>
-          <label><input type="radio" name="membership" value="basic" required> Basic</label>
-          <label><input type="radio" name="membership" value="plus"> Plus</label>
-          <label><input type="radio" name="membership" value="premium"> Premium</label>
+          <div class="membership-options">
+            <label>
+              <input type="radio" name="membership" value="Basic Plan" required>
+              <span>Basic</span>
+              <small>Gym Access (Weekdays), Free Locker Usage, Email Support</small>
+            </label>
+            <label>
+              <input type="radio" name="membership" value="Standard Plan">
+              <span>Plus</span>
+              <small>Unlimited Gym Access, Free Locker & Shower, 2 Group Classes</small>
+            </label>
+            <label>
+              <input type="radio" name="membership" value="Premium Plan">
+              <span>Premium</span>
+              <small>Unlimited Gym & Classes, Personal Trainer (2 sessions/month)</small>
+            </label>
+          </div>
+          <div class="error-message">Please select a membership type</div>
           <button type="button" class="prev">Back</button>
           <button type="button" class="next">Continue</button>
         </section>
+
 
         <!-- Step 3: Account Details -->
         <section class="form-step" data-step="3">
           <h2>Account Details</h2>
           <input type="text" name="firstName" placeholder="First Name" required>
+          <div class="error-message">First name is required</div>
+          
           <input type="text" name="lastName" placeholder="Last Name" required>
+          <div class="error-message">Last name is required</div>
+          
           <input type="email" name="email" placeholder="Email" required>
-          <input type="password" name="password" placeholder="Password" required>
+          <div class="error-message">Please enter a valid email</div>
+          
+          <input type="password" name="password" placeholder="Password" required minlength="8">
+          <div class="error-message">Password must be at least 8 characters</div>
+          
           <input type="date" name="dob" required>
+          <div class="error-message">Date of birth is required</div>
+          
           <select name="gender">
             <option value="">Gender (Optional)</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
-          <input type="tel" name="phone" placeholder="Phone Number" required>
+          
+          <input type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9]{10,}">
+          <div class="error-message">Please enter a valid phone number</div>
+          
           <input type="text" name="address" placeholder="Address" required>
+          <div class="error-message">Address is required</div>
+          
           <button type="button" class="prev">Back</button>
           <button type="button" class="next">Continue</button>
         </section>
 
         <!-- Step 4: Bank Details -->
         <section class="form-step" data-step="4">
-          <h2>Bank Details</h2>
-          <input type="text" name="cardNumber" placeholder="Card Number" required>
-          <input type="text" name="expiry" placeholder="MM/YY" required>
-          <input type="text" name="cvv" placeholder="CVV" required>
+          <h2>Payment Information</h2>
+          <input type="text" name="cardNumber" placeholder="Card Number" required pattern="[0-9]{16}">
+          <div class="error-message">Please enter a valid 16-digit card number</div>
+          
+          <div class="card-details">
+            <input type="text" name="expiry" placeholder="MM/YY" required pattern="(0[1-9]|1[0-2])\/([0-9]{2})">
+            <div class="error-message">Please enter a valid expiry date (MM/YY)</div>
+            
+            <input type="text" name="cvv" placeholder="CVV" required pattern="[0-9]{3,4}">
+            <div class="error-message">Please enter a valid CVV</div>
+          </div>
+          
           <button type="button" class="prev">Back</button>
           <button type="button" class="next">Continue</button>
         </section>
@@ -92,8 +188,14 @@
         <!-- Step 5: Confirm -->
         <section class="form-step" data-step="5">
           <h2>Confirm Your Details</h2>
-          <p>Review everything before submitting.</p>
-          <label><input type="checkbox" required> I agree to the Terms and Conditions</label>
+          <div id="summary-details">
+            <!-- Will be populated by JavaScript -->
+          </div>
+          <label>
+            <input type="checkbox" required>
+            I agree to the <a href="terms.html" target="_blank">Terms and Conditions</a>
+          </label>
+          <div class="error-message">You must agree to the terms and conditions</div>
           <button type="button" class="prev">Back</button>
           <button type="submit">Confirm & Join</button>
         </section>

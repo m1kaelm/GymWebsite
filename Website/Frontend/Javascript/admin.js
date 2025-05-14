@@ -629,14 +629,19 @@ function deleteTrainer(id) {
       fetch(`${apiBaseUrl}/api/trainers/${id}`, {
         method: "DELETE"
       })
-        .then(res => res.json())
-        .then(data => {
-          alert(data.message || "Trainer deleted.");
-          loadTrainers();
+        .then(res => res.json().then(data => ({ status: res.status, body: data })))
+        .then(({ status, body }) => {
+          if (status === 200) {
+            alert(body.message || "Trainer deleted.");
+            loadTrainers();
+          } else {
+            console.error("Backend error:", body.error);
+            alert("Failed to delete trainer: " + (body.error || "Unknown error"));
+          }
         })
         .catch(err => {
-          console.error("Failed to delete trainer:", err);
-          alert("Failed to delete trainer.");
+          console.error("Network error deleting trainer:", err);
+          alert("Failed to delete trainer. Network or server error.");
         });
     });
   }
@@ -1024,6 +1029,31 @@ function editClassType(id) {
       });
   });
 }
+function deleteClassType(id) {
+  if (confirm("Are you sure you want to delete this class type?")) {
+    waitForApiBaseUrl().then(apiBaseUrl => {
+      fetch(`${apiBaseUrl}/api/class-types/${id}`, {
+        method: "DELETE"
+      })
+        .then(res => res.json().then(data => ({ status: res.status, body: data })))
+        .then(({ status, body }) => {
+          if (status === 200) {
+            alert(body.message || "Class type deleted.");
+            loadClassTypes(); // Refresh table
+            populateClassTypeDropdown(); // Update class type selector
+          } else {
+            console.error("Backend error:", body.error);
+            alert("Failed to delete class type: " + (body.error || "Unknown error"));
+          }
+        })
+        .catch(err => {
+          console.error("Network error deleting class type:", err);
+          alert("Failed to delete class type. Network or server error.");
+        });
+    });
+  }
+}
+
 
 // Add Trainer Form
 const trainerForm = document.getElementById('trainer-form');

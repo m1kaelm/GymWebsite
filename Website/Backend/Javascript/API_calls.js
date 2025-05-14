@@ -7,11 +7,102 @@ const router = express.Router();
 
 // Register a new member
 router.post('/members/register', (req, res) => {
-    const { first_name, last_name, email, password, phone_number } = req.body;
-    db.run(`INSERT INTO members (first_name, last_name, email, password, phone_number) VALUES (?, ?, ?, ?, ?)`, 
-           [first_name, last_name, email, password, phone_number], function(err) {
-        if (err) return res.status(400).json({ error: "Email already exists" });
-        res.json({ message: "User registered successfully", id: this.lastID });
+    const { 
+        first_name, 
+        last_name, 
+        email, 
+        password, 
+        phone_number,
+        location,
+        membership_type,
+        dob,
+        gender,
+        address
+    } = req.body;
+
+    // Validate required fields
+    if (!first_name || !last_name || !email || !password || !phone_number || !location || !membership_type) {
+        return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ error: "Invalid email format" });
+    }
+
+    // Validate password length
+    if (password.length < 8) {
+        return res.status(400).json({ error: "Password must be at least 8 characters long" });
+    }
+
+    // Check if email already exists
+    db.get("SELECT id FROM members WHERE email = ?", [email], (err, row) => {
+        if (err) {
+            console.error("Database error:", err);
+            return res.status(500).json({ error: "Database error occurred" });
+        }
+        if (row) {
+            return res.status(400).json({ error: "Email already registered" });
+        }
+
+        // Insert new member
+        db.run(`INSERT INTO members (
+            first_name, 
+            last_name, 
+            email, 
+            password, 
+            phone_number,
+            date_of_birth,
+            join_date,
+            status
+        ) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, 'active')`,
+        [
+            first_name,
+            last_name,
+            email,
+            password,
+            phone_number,
+            dob || null
+        ], 
+        function(err) {
+            if (err) {
+                console.error("Error creating member:", err);
+                return res.status(500).json({ error: "Failed to create member account" });
+            }
+
+            // Create initial subscription
+            db.run(`INSERT INTO member_subscriptions (
+                member_id,
+                plan_id,
+                start_date,
+                end_date,
+                payment_status,
+                created_at
+            ) VALUES (?, (SELECT id FROM membership_plans WHERE name = ?), CURRENT_DATE, DATE('now', '+30 days'), 'active', CURRENT_TIMESTAMP)`,
+            [this.lastID, membership_type],
+            function(err) {
+                if (err) {
+                    console.error("Error creating subscription:", err);
+                    // Don't return error here, as member is already created
+                }
+                
+                req.session.user = {
+                    id: this.lastID,
+                    name: first_name,
+                    role: 'member'
+                };
+
+                res.json({ 
+                    message: "Registration successful",
+                    memberId: this.lastID,
+                    name: first_name,
+                    role: 'member'
+                });
+
+                
+            });
+        });
     });
 });
 

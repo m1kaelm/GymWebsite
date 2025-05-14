@@ -373,25 +373,35 @@ function loginMember() {
         return;
     }
 
-    let apiURL = `${apiBaseUrl}/members/login`;
-    
-
     waitForApiBaseUrl().then(apiBaseUrl => {
-        fetch(apiURL, {
+        fetch(`${apiBaseUrl}/api/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify({ email, password })
         })
         .then(res => res.json())
         .then(data => {
-            
-
             if (data.error) {
                 document.getElementById("loginResponse").innerText = " " + data.error;
             } else {
+                localStorage.setItem("userId", data.userId);
+                localStorage.setItem("userName", data.name);
+                localStorage.setItem("role", data.role);
+                
                 document.getElementById("loginResponse").innerText = ` Welcome, ${data.name}!`;
+                
+                switch (data.role) {
+                    case "admin": window.location.href = "admin_dashboard.html"; break;
+                    case "trainer": window.location.href = "trainer_dashboard.html"; break;
+                    case "staff": window.location.href = "staff_dashboard.html"; break;
+                    default: window.location.href = "user_dashboard.html";
+                }
             }
         })
-        .catch(err => console.error(" [VERBOSE] Error Logging In:", err));
+        .catch(err => {
+            console.error(" [VERBOSE] Error Logging In:", err);
+            document.getElementById("loginResponse").innerText = " Login failed. Please try again.";
+        });
     });
 }

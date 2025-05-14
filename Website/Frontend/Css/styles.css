@@ -1048,13 +1048,13 @@ input[type="checkbox"] {
 .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 85%;
   width: auto;
-  margin-top: -22px;
-  padding: 16px;
+  margin-top: -50px;
+  padding: 10px;
   color: white;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
@@ -1149,7 +1149,7 @@ input[type="checkbox"] {
 }
 
 .active {
-  background-color: #717171;
+  background-color: #7d6f2ee;
 }
 .about-intro {
   max-width: 800px;

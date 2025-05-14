@@ -11,21 +11,23 @@
 
 ## Installation & Setup
 
-1. Navigate to the javascript folder:
-   ![alt text](Website\Images\image.png)
+1. Navigate to the project  **root folder** :
+
+    "Gymwebsite"
+
+2. Install all project dependencies
 
 ```
-cd Website\Backend\Javascript
+npm install
 ```
 
-3. Start the server:
+3. run start command
 
 ```
-node server.js
+npm run start-backend
 ```
 
-![alt text](Website\Images\image-1.png)
-
-3. Try accessing the link below in your browser to test.
+This will run the server located at `Website/Backend/Javascript/server.js`
+Try accessing the link below in your browser to test.
 
    `http://localhost:3000/html/index.html`

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flex Gym - Interactive Exercises</title>
+    <link rel="stylesheet" href="../Css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        background: #f4f4f4;
+        font-family: Arial, sans-serif;
+      }
+
+      /* New Split Hero Section */
+      .split-hero {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        min-height: 400px;
+        background: #000;
+        color: white;
+      }
+
+      .hero-image-container,
+      .hero-text-container {
+        flex: 1 1 50%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-text-container {
+        background: linear-gradient(to right, #000000, #333333);
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+      }
+
+      .hero-text-container h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+
+      .hero-text-container p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+
+      .hero-text-container .btn {
+        background: #f04e30;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background 0.3s ease;
+      }
+
+      .hero-text-container .btn:hover {
+        background: #c2361f;
+      }
+
+      @media (max-width: 768px) {
+        .split-hero {
+          flex-direction: column;
+        }
+        .hero-image-container,
+        .hero-text-container {
+          flex: 1 1 100%;
+          min-height: 300px;
+        }
+        .hero-text-container h1 {
+          font-size: 2rem;
+        }
+      }
+
+      /* Workout Section */
+      .workout-section {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 20px;
+      }
+
+      .exercise-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 60px;
+        gap: 30px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease;
+      }
+
+      .exercise-row.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .exercise-row:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .exercise-video {
+        flex: 1;
+      }
+
+      .exercise-video video {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .exercise-video img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        object-fit: cover;
+      }
+
+      .exercise-info {
+        flex: 1;
+        background: #ffffff;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .exercise-info h2 {
+        margin-bottom: 10px;
+        color: #111;
+      }
+
+      .exercise-info p {
+        color: #555;
+        font-size: 1rem;
+      }
+
+      .exercise-info .btn {
+        margin-top: 20px;
+        background: black;
+      }
+
+      @media (max-width: 768px) {
+        .exercise-row {
+          flex-direction: column !important;
+        }
+        .exercise-row:nth-child(even) {
+          flex-direction: column !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navigation">
+      <a href="index.html" class="logo" aria-label="Gym Home"></a>
+
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="classes.html">Classes</a>
+        <a href="exercise_guide.html">Exercise Guide</a>
+        <a href="workout.html" class="active">Free Workouts</a>
+        <a href="membershipInfo.html">Membership</a>
+        <a href="about.html">About</a>
+      </div>
+
+      <div class="navigation-btns">
+        <a href="register.html"><i class="fas fa-user-plus"></i> Sign Up</a>
+        <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="split-hero">
+      <div class="hero-image-container">
+        <img src="../media/gymroom.jpg" alt="Gym Room" />
+      </div>
+      <div class="hero-text-container">
+        <h1>Enjoy free Flex Gym Workouts</h1>
+        <p>
+          Train smarter. Get stronger. Stay motivated with our free workouts.
+        </p>
+        <a href="#exercises" class="btn">Start Training</a>
+      </div>
+    </section>
+
+    <section id="exercises" class="workout-section">
+      <!-- Exercise 1: Seated Row (Resistance Band) -->
+      <div class="exercise-row">
+        <div class="exercise-video">
+          <img
+            src="../media/seated-row.webp"
+            alt="Seated Row Exercise"
+            class="exercise-image"
+          />
+        </div>
+        <div class="exercise-info">
+          <h2>Seated Row (Band)</h2>
+          <p>
+            Strengthen your back muscles with resistance bands — no machine
+            needed!
+          </p>
+          <a
+            href="https://www.youtube.com/watch?v=LSkyinhmA8k"
+            target="_blank"
+            class="btn"
+            >Try Seated Row</a
+          >
+        </div>
+      </div>
+
+      <!-- Exercise 2: Superman Hold -->
+      <div class="exercise-row">
+        <div class="exercise-video">
+          <img
+            src="../media/superman-hold.jpg"
+            alt="Superman Hold Exercise"
+            class="exercise-image"
+          />
+        </div>
+        <div class="exercise-info">
+          <h2>Superman Hold</h2>
+          <p>
+            Engage your lower back, glutes, and shoulders to improve posture and
+            endurance.
+          </p>
+          <a
+            href="https://www.youtube.com/watch?v=z6PJMT2y8GQ"
+            target="_blank"
+            class="btn"
+            >Try Superman Hold</a
+          >
+        </div>
+      </div>
+
+      <!-- Exercise 3: Standing Calf Raise -->
+      <div class="exercise-row">
+        <div class="exercise-video">
+          <img
+            src="../media/calf-raise.jpg"
+            alt="Standing Calf Raise Exercise"
+            class="exercise-image"
+          />
+        </div>
+        <div class="exercise-info">
+          <h2>Standing Calf Raise</h2>
+          <p>
+            Strengthen your calves and improve your ankle stability and
+            explosive power.
+          </p>
+          <a
+            href="https://www.youtube.com/watch?v=-M4-G8p8fmc"
+            target="_blank"
+            class="btn"
+            >Try Calf Raise</a
+          >
+        </div>
+      </div>
+
+      <!-- Exercise 4: Single Leg Dumbbell Deadlift -->
+      <div class="exercise-row">
+        <div class="exercise-video">
+          <img
+            src="../media/leg-rise.avif"
+            alt="Single Leg Dumbbell Deadlift"
+            class="exercise-image"
+          />
+        </div>
+        <div class="exercise-info">
+          <h2>Single Leg Dumbbell Deadlift</h2>
+          <p>
+            Strengthen hamstrings, glutes, and balance with this powerful
+            unilateral exercise.
+          </p>
+          <a
+            href="https://www.youtube.com/watch?v=an8gWipT47Q"
+            target="_blank"
+            class="btn"
+            >Try Single Leg Deadlift</a
+          >
+        </div>
+      </div>
+
+      <!-- Exercise 5: Reverse Lunge -->
+      <div class="exercise-row">
+        <div class="exercise-video">
+          <img
+            src="../media/reverse-lunge.webp"
+            alt="Reverse Lunge Exercise"
+            class="exercise-image"
+          />
+        </div>
+        <div class="exercise-info">
+          <h2>Reverse Lunge</h2>
+          <p>
+            Build single-leg strength, boost balance, and strengthen your quads
+            and glutes.
+          </p>
+          <a
+            href="https://www.youtube.com/watch?v=wrwwXE_x-pQ"
+            target="_blank"
+            class="btn"
+            >Try Reverse Lunge</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Flex Gym. All rights reserved.</p>
+    </footer>
+
+    <!-- Script -->
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
+      const navigationBtns = document.querySelector(".navigation-btns");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        navigationBtns.classList.toggle("active");
+      });
+
+      // Scroll Animation
+      const rows = document.querySelectorAll(".exercise-row");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      });
+
+      rows.forEach((row) => observer.observe(row));
+    </script>
+  </body>
+</html>
